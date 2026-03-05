@@ -77,6 +77,26 @@
     <h3>Computer Network</h3>
     <p>课程章节讲解与体系结构复习笔记。</p>
   </a>
+  <a class="entry-card reveal-on-scroll" href="06-Probability-Theory/README.md">
+    <p class="entry-id">06</p>
+    <h3>Probability Theory</h3>
+    <p>概率论课程笔记与题目推导整理。</p>
+  </a>
+  <a class="entry-card reveal-on-scroll" href="07-MaoGai/README.md">
+    <p class="entry-id">07</p>
+    <h3>MaoGai</h3>
+    <p>毛概课程学习资料与复习记录。</p>
+  </a>
+  <a class="entry-card reveal-on-scroll" href="08-OOP-Cpp-Practice/README.md">
+    <p class="entry-id">08</p>
+    <h3>OOP Cpp Practice</h3>
+    <p>面向对象程序设计实践（C++）课程笔记。</p>
+  </a>
+  <a class="entry-card reveal-on-scroll" href="09-Data-Structure-Course-Design/README.md">
+    <p class="entry-id">09</p>
+    <h3>Data Structure Course Design</h3>
+    <p>数据结构课程设计方案、任务和复盘文档。</p>
+  </a>
 </div>
 
 ## 常见问题 { #faq }

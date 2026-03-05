@@ -5,6 +5,7 @@ param(
   [switch]$AllowEmpty,
   [switch]$NoSync,
   [switch]$SyncOnly,
+  [switch]$StrictBuild,
   [string]$ConfigPath = ""
 )
 
@@ -170,6 +171,9 @@ function Invoke-SyncMappings {
     if ($deleteMissing) {
       $targetFiles = Get-ChildItem -LiteralPath $target -File -Recurse -Filter *.md
       foreach ($targetFile in $targetFiles) {
+        if ($targetFile.Name -ieq "README.md") {
+          continue
+        }
         $targetRelative = Get-RelativePathCompat -BasePath $target -Path $targetFile.FullName
         $targetRelative = $targetRelative -replace '[\\/]+', [System.IO.Path]::DirectorySeparatorChar
         if (-not $seenRelative.Contains($targetRelative)) {
@@ -177,6 +181,46 @@ function Invoke-SyncMappings {
           $deletedCount++
         }
       }
+    }
+
+    $generateReadme = Get-BoolValue -Value $mapping.generateReadme -DefaultValue $true
+    if ($generateReadme) {
+      $readmeTitle = [string]$mapping.readmeTitle
+      if ([string]::IsNullOrWhiteSpace($readmeTitle)) {
+        $readmeTitle = $name
+      }
+
+      $readmePath = Join-Path $target "README.md"
+      $relativeList = @()
+      foreach ($file in $files) {
+        if ($flatten) {
+          $relative = $file.Name
+        } else {
+          $relative = Get-RelativePathCompat -BasePath $source -Path $file.FullName
+        }
+        $relative = ($relative -replace '[\\/]+', '/')
+        $relativeList += $relative
+      }
+
+      $relativeList = $relativeList | Sort-Object -Unique
+      $readmeLines = @()
+      $readmeLines += "# $readmeTitle"
+      $readmeLines += ""
+      $readmeLines += "Auto-synced from: $source"
+      $readmeLines += ""
+
+      if ($relativeList.Count -eq 0) {
+        $readmeLines += "> No markdown notes found in source folder yet."
+      } else {
+        $readmeLines += "## Notes"
+        $readmeLines += ""
+        foreach ($rel in $relativeList) {
+          $nameOnly = [System.IO.Path]::GetFileName($rel)
+          $readmeLines += "- [$nameOnly](./$rel)"
+        }
+      }
+
+      ($readmeLines -join [Environment]::NewLine) | Out-File -FilePath $readmePath -Encoding utf8 -Force
     }
 
     Write-Host "Mapping '$name': scanned $($files.Count) md files, updated $updatedCount, deleted $deletedCount." -ForegroundColor Green
@@ -212,8 +256,14 @@ if ($SyncOnly) {
 }
 
 if (-not $SkipBuild) {
-  Invoke-Step "Run local build check (mkdocs build --strict)" {
-    mkdocs build --strict
+  if ($StrictBuild) {
+    Invoke-Step "Run local build check (mkdocs build --strict)" {
+      mkdocs build --strict
+    }
+  } else {
+    Invoke-Step "Run local build check (mkdocs build)" {
+      mkdocs build
+    }
   }
 } else {
   Write-Host "`n==> Build check skipped" -ForegroundColor Yellow

@@ -2,7 +2,7 @@ site_name: "My Knowledge Base"
 site_description: "Computer Science Notes and Project Logs"
 site_author: "BurningUFO"
 
-copyright: "Copyright © 2026 BurningUFO"
+copyright: "Copyright (c) 2026 BurningUFO"
 
 theme:
   name: material
@@ -28,10 +28,11 @@ nav:
       - 目录: 03-Python-Blue-Bridge-Cup/README.md
       - 示例笔记: 03-Python-Blue-Bridge-Cup/test.md
   - 04 项目实践: 04-Projects/README.md
-  - 05 计算机网络:
-      - 目录: 05-Computer-Network/README.md
-      - 网络分类讲解: 05-Computer-Network/Ch1-introduction-2-网络分类-讲解文档.md
-      - 体系结构笔记: 05-Computer-Network/Ch1-introduction-3-体系结构-笔记.md
+  - 05 计算机网络: 05-Computer-Network/README.md
+  - 06 概率论: 06-Probability-Theory/README.md
+  - 07 毛概: 07-MaoGai/README.md
+  - 08 面向对象程序设计实践(C++): 08-OOP-Cpp-Practice/README.md
+  - 09 数据结构课程设计: 09-Data-Structure-Course-Design/README.md
 
 markdown_extensions:
   - attr_list
