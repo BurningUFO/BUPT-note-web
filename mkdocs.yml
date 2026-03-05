@@ -1,0 +1,53 @@
+site_name: "My Knowledge Base"
+site_description: "Computer Science Notes and Project Logs"
+site_author: "BurningUFO"
+
+copyright: "Copyright © 2026 BurningUFO"
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: slate
+      primary: black
+      accent: cyan
+
+nav:
+  - 首页: index.md
+  - 01 数据结构: 01-Data-Structures/README.md
+  - 02 C/C++: 02-C-and-Cpp/README.md
+  - 03 蓝桥杯 Python:
+      - 目录: 03-Python-Blue-Bridge-Cup/README.md
+      - 示例笔记: 03-Python-Blue-Bridge-Cup/test.md
+  - 04 项目实践: 04-Projects/README.md
+  - 05 计算机网络:
+      - 目录: 05-Computer-Network/README.md
+      - 网络分类讲解: 05-Computer-Network/Ch1-introduction-2-网络分类-讲解文档.md
+      - 体系结构笔记: 05-Computer-Network/Ch1-introduction-3-体系结构-笔记.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
