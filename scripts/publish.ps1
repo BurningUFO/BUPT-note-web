@@ -66,6 +66,28 @@ function Get-RelativePathCompat {
   return [System.Uri]::UnescapeDataString($relativeUri).Replace('/', [System.IO.Path]::DirectorySeparatorChar)
 }
 
+function Get-FileHashCompat {
+  param([string]$Path)
+
+  if (Get-Command Get-FileHash -ErrorAction SilentlyContinue) {
+    return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash
+  }
+
+  $stream = [System.IO.File]::OpenRead($Path)
+  try {
+    $sha = [System.Security.Cryptography.SHA256]::Create()
+    try {
+      $hashBytes = $sha.ComputeHash($stream)
+    } finally {
+      $sha.Dispose()
+    }
+  } finally {
+    $stream.Dispose()
+  }
+
+  return ([System.BitConverter]::ToString($hashBytes) -replace '-', '')
+}
+
 function Invoke-SyncMappings {
   param(
     [string]$RepoRoot,
@@ -156,8 +178,8 @@ function Invoke-SyncMappings {
 
       $shouldCopy = $true
       if (Test-Path -LiteralPath $destination) {
-        $srcHash = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash
-        $dstHash = (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash
+        $srcHash = Get-FileHashCompat -Path $file.FullName
+        $dstHash = Get-FileHashCompat -Path $destination
         $shouldCopy = $srcHash -ne $dstHash
       }
 
