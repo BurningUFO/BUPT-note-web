@@ -1,0 +1,2226 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Computer Science Notes and Project Logs">
+      
+      
+        <meta name="author" content="BurningUFO">
+      
+      
+      
+        <link rel="prev" href="../../../01-Introduction-%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/">
+      
+      
+        <link rel="next" href="../../../02-C%2B%2B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>02.C++ Foundations - My Knowledge Base</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="My Knowledge Base" class="md-header__button md-logo" aria-label="My Knowledge Base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Knowledge Base
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02.C++ Foundations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../05-Computer-Network/" class="md-tabs__link">
+          
+  
+  
+  05 Computer Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../06-Probability-Theory/" class="md-tabs__link">
+          
+  
+  
+  06 Probability Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../07-MaoGai/" class="md-tabs__link">
+          
+  
+  
+  07 MaoGai
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  08 OOP Cpp Practice
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../09-Data-Structure-Course-Design/" class="md-tabs__link">
+          
+  
+  
+  09 Data Structure Course Design
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="My Knowledge Base" class="md-nav__button md-logo" aria-label="My Knowledge Base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Knowledge Base
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Computer Network
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 Computer Network
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-Computer-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-Computer-Network/Ch1-introduction-2-%E7%BD%91%E7%BB%9C%E5%88%86%E7%B1%BB-%E8%AE%B2%E8%A7%A3%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch1-introduction-2-网络分类-讲解文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-Computer-Network/Ch1-introduction-3-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch1-introduction-3-体系结构-笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 Probability Theory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 Probability Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../06-Probability-Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 MaoGai
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07 MaoGai
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../07-MaoGai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 OOP Cpp Practice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08 OOP Cpp Practice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Introduction-%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-Introduction-详细笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.C++ Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-C%2B%2B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-C++语言基础-期末复习总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 Data Structure Course Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09 Data Structure Course Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-Data-Structure-Course-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-Data-Structure-Course-Design/AgentTeam%E6%96%B9%E6%A1%88%E4%B8%8EPrompt%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AgentTeam方案与Prompt模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-Data-Structure-Course-Design/docs/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tasks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-Data-Structure-Course-Design/%E4%B8%89%E4%BA%BA%E5%B0%8F%E7%BB%84AI%E5%8D%8F%E4%BD%9C%E8%90%BD%E5%9C%B0%E8%AE%A1%E5%88%92%E4%B9%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三人小组AI协作落地计划书
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-Data-Structure-Course-Design/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E8%AE%B2%E4%B9%89%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构课程设计讲义总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="c">C+ + 语言基础</h1>
+<p>概述</p>
+<h1 id="_1">内 容</h1>
+<p> 概述 ： C++ 与 C 的关系<br />
+ 基本数据类型<br />
+ 用户 自定义数据类型<br />
+ 表达式<br />
+基本控制结构<br />
+函数</p>
+<h1 id="c-c"> C++ 源于 C 语言</h1>
+<h1 id="c-b"> C 语言是在 B 语言的基础上发展起来的</h1>
+<p> 1 960 ： ALGOL 60<br />
+ 1 963 ： 剑 桥大学推 出了 CPL （ Combined Programming Language ）语言 后来经简化为BCPL语言<br />
+ 1 970 ： 贝尔实验室的 K.Thompson 以BCPL语言为基础， 设计了一种新语言 取其第一字母 B 称为 B 语言<br />
+ 1 972 ： 贝尔实验室的Dennis M.Ritchie为克服B语言的诸多不足， 在B语言的基础上重新设计了一种语言， 取其第二字母C， 称为 C 语言</p>
+<h1 id="c_1"> C语言的特点是极高的代码效率， 但 ：</h1>
+<p> 不支持面向对象， 不支持类与封装机制<br />
+ 难以支持代码重用</p>
+<h1 id="1-980-bj-arne-stroustrup-c-c-mathrm-c"> 1 980年， 贝 尔实验室的 Bj arne Stroustrup 对 C 语言进行了扩充， 提 出了“带类的C”， 多次修改后起名为 <span class="arithmatex">\(\mathrm { C } { + + }\)</span> ， 以后又经过不断的改进</h1>
+<p> C++改进了C的不足之处， 支持面向对象的程序设计， 在改进的同时保持了C的简洁性和高效性。</p>
+<h1 id="c-c_1">C+ + 与 C 的关系</h1>
+<p> C++语言是在C语言的基础上进行了扩充和改进而得到的</p>
+<p> 它继承了 C 语言的全部内容<br />
+ 并在 C 语言的基础之上增加了面向对象编程的内容<br />
+ C++既支持面向过程的程序设计 又支持新型的面向对象程序设计</p>
+<p>C++保持了与C语言的兼容</p>
+<p> 大部分的 C 代码的程序不经修改 或很少修改就可被 C++ 使用<br />
+ 用 C 语言编写的许多库函数和应用软件也都可以用于 C++</p>
+<p> C++不是一个纯粹的面向对象程序设计语言</p>
+<p> C 语言是面向过程的语言 C++与C兼容 支持面向过程的程序设计<br />
+ 由于面向过程程序设计和面向对象程序设计是两种不同风格的程序设计技术， 对于习惯于面向过程程序设计的程序员在学习使用 C++ 时可能存在一定的障碍</p>
+<h1 id="c-c_2">C+ + 对 C 的扩展</h1>
+<p> 增加了一些在新的运算符 使得C++应用起来更加方便</p>
+<p> new， delete 用于内存管理， 用户不需直接使用库函数<br />
+ 增加了引用 &amp; ， 使得引用函数参数带来了很大方便。</p>
+<p> 函数重载， 设置缺省参数， 提高编程灵活性， 减少了代码冗余<br />
+ 引进了内联函数的概念 提高了程序的效率<br />
+ 变量在需要时进行说明， 方便了程序编写</p>
+<p> C语言先对变量的说明语句 再是执行语句</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>void func(int a, int b) { ... }  
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>void func(float a, float b) { ... }  
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>void foo(int k, int m=1);  
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>int i, j;  
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>float g, h;  
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>main()  
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>{  
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    func(i, j);  
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    func(g, h);  
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    foo(100);  
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>} 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">void</span> <span class="nx">func</span><span class="p">(</span><span class="kr">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">b</span><span class="p">)</span>  
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>  
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="p">...</span> <span class="o">/</span><span class="err">/执行语句  </span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="kr">int</span> <span class="nx">i</span><span class="p">;</span>  
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="nx">i</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>  
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">...</span> <span class="o">/</span><span class="err">/其他执行语句  </span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nx">float</span> <span class="nx">g</span><span class="p">;</span>  
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="nx">g</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">;</span>  
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="p">...</span>  
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span>  
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="p">{</span>  
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="p">}</span>  
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span> 
+</code></pre></div>
+<h1 id="c-c_3">C+ + 对 C 的扩展</h1>
+<p> 与面向对象相关的功能 ：</p>
+<p> 类与对象 ： 抽象、 封装、 继承与派生、 多态性</p>
+<p>异常处理<br />
+模板编程， 提供标准模板库 （STL）</p>
+<p> 容器 、 流式 IO 、 字符 串 、 . . .</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>include&lt;iostream.h&gt;#include&lt;string.h&gt;main(){charbuf_1[1024];charbuf_2[1024];printf(&quot;Please inpsscanf(buf_1,&quot;%s&quot;)printf(&quot;Please inpsscanf(buf_2,&quot;%s&quot;) strcat(buf_1,buf_2printf(&quot;%s\n&quot;,buf_1) } 
+</code></pre></div>
+<h1 id="_2">编程方法</h1>
+<p> C++ 对 C 的兼容是建立在发展和完善的基础上的<br />
+ C++ 支持面向对象的程序设计<br />
+ C 是面向过程的程序设计语言</p>
+<h1 id="_3">程序结构</h1>
+<p> C++ 程序 （面向对象） 的结构采用 “对象+消息” 模式<br />
+ C 程序结构采用 “数据+算法” 模式</p>
+<h1 id="_4">适用性</h1>
+<p> 底层系统程序、 嵌入式程序设计、 大规模高层应用设计、通用程序设计、 数值科学计算 ...</p>
+<h1 id="c_2">C++ 语言基础</h1>
+<p>C++ 词法语法规则</p>
+<h1 id="c_3">C+ +字符集</h1>
+<p> 字符集是构成C++语言的基本元素。<br />
+ 大小写的英文字母</p>
+<div class="arithmatex">\[
+\begin{array}{l} \mathrm {A} \sim \mathrm {Z}, \mathrm {a} \sim \mathrm {z} \end{array}
+\]</div>
+<p>数字字符</p>
+<div class="arithmatex">\[
+0 \sim 9
+\]</div>
+<p> 符号</p>
+<div class="arithmatex">\[
+\begin{array}{c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c} &amp; \# &amp; \% &amp; &amp; &amp; \wedge &amp; &amp; &amp; \&amp; &amp; &amp; &amp; * &amp; &amp; &amp; \vdots &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \overline {{\cdot}} &amp; &amp; &amp; &amp; &amp; + &amp; &amp; = &amp; &amp; &amp; &amp; - &amp; &amp; &amp; &amp; \sim &amp; &amp; &amp; &amp; &lt;  &amp; &amp; &amp; &amp; &gt; &amp; &amp; &amp; &amp; / &amp; &amp; &amp; &amp; \backslash &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\ &amp; \overline {{\cdot}} &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\cdot} &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {]} &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp;
+\]</div>
+<p> 其他符号</p>
+<p>&lt;空格符&gt; &lt;换行符&gt; <TAB></p>
+<h1 id="_5">词法记号</h1>
+<p> 关键字 C++预定义的单词<br />
+ 标识符 程序员声明的单词， 它命名程序正文中的一些实体<br />
+ 文字 在程序中直接使用符号表示的数据<br />
+ 操作符 用 于实现各种 运算的 符号 : + - * / . . .<br />
+ 分隔符 用于分隔各个词法记号或程序正文<br />
+ 空白符</p>
+<p> 空格<br />
+ 制表符<br />
+ 换行符 <br />
+ 注释</p>
+<h1 id="_6">关键字</h1>
+<p><img alt="" src="images/5be1fda58dd9d22da7ce2c9b25df9d6f3ffc06bfe194b19c2b2203aaadc5a7c7.jpg" /></p>
+<p>关键字是C++保留的 作为专用定义符的单词 在程序中不允许另作它用</p>
+<p>auto</p>
+<p>cons t</p>
+<p>delete</p>
+<p>extern</p>
+<p>goto</p>
+<p>mutable</p>
+<p>public</p>
+<p>s i zeof</p>
+<p>thi s</p>
+<p>virtual</p>
+<p>break</p>
+<p>continue</p>
+<p>double</p>
+<p>fal se</p>
+<p>i f</p>
+<p>new</p>
+<p>regi s ter</p>
+<p>s tatic</p>
+<p>ture</p>
+<p>void</p>
+<p>case</p>
+<p>defaul t</p>
+<p>el se</p>
+<p>float</p>
+<p>inl ine</p>
+<p>operator</p>
+<p>return</p>
+<p>s tatic cas t</p>
+<p>typedef</p>
+<p>while</p>
+<p>char</p>
+<p>enum</p>
+<p>for</p>
+<p>int</p>
+<p>private</p>
+<p>short</p>
+<p>s truct</p>
+<p>union</p>
+<p>clas s</p>
+<p>defaul t</p>
+<p>expl ici t</p>
+<p>friend</p>
+<p>long</p>
+<p>protected</p>
+<p>s igned</p>
+<p>swi tch</p>
+<p>uns igned</p>
+<h1 id="_7">标识符</h1>
+<h1 id="_8"> 标识符是对实体定义的一种定义符</h1>
+<p> 由字母或下划线开头、 后面跟字母或数字或下划线组成的字符序列<br />
+ 具有特定的有效长度</p>
+<p> ANSI C 标准规定 3 1 个字符</p>
+<p> 用来标识用户定义的常量名、 变量名、 函数名、 文件名、数组名、 和数据类型名和程序等。<br />
+ 大写字母和小写字母代表不同的标识符</p>
+<h1 id="_9">文字常量</h1>
+<h1 id="_10">数字常量</h1>
+<p>1 1 00 200U 1 0000L</p>
+<p>0x 1 00 3 . 1 4 1 . 2 5 e+ 1 0</p>
+<h1 id="_11">字符常量</h1>
+<p>‘ a ’ ‘ b ’ ‘ ab c d ’</p>
+<h1 id="_12">字符串</h1>
+<p> 字符串是由双引号括起来的字符串常量</p>
+<p>“China”、 “C++ Program”</p>
+<h1 id="_13">分隔符与空白符</h1>
+<h1 id="_14"> 分隔符</h1>
+<p> 用于分隔各个词法记号或程序正文</p>
+<p>{ } ( ) 和 空 白 符</p>
+<h1 id="_15">空白符</h1>
+<p> 空格、 换行、 制表符<br />
+ 注释</p>
+<p> 是用来帮助阅读、 理解及维护程序<br />
+ 注释部分被忽略 不产生目标代码<br />
+ C++语言提供两种注释方式 ：</p>
+<p> 一种是与C兼容的多行注释 用 /<em> 和 </em>/ 分界<br />
+另一种是单行注释， 以 “//”开头， 表明本行中 “//”符号后的内容是注释</p>
+<h1 id="c_4">C+ + 简单实例</h1>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">//2_1.cpp   </span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="c1">   </span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w">   </span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w">   </span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Hello!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Welcome to c++!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;pause&quot;</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">   </span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span><span class="w">   </span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">运行结果</span><span class="err">：</span><span class="w">   </span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">Hello</span><span class="o">!</span><span class="w">   </span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">Welcome</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">c</span><span class="o">++!</span>
+</code></pre></div>
+<h1 id="c_5">C+ + 简单实例</h1>
+<p>include<iostream> using namespace std; <br />
+int main(void) <br />
+{ const int <span class="arithmatex">\(\boxed{\mathsf{PRICE}} = 30\)</span> //符号常量 int num,total; //变量 num <span class="arithmatex">\(= 10\)</span> total <span class="arithmatex">\(=\)</span> num * PRICE; cout&lt;&lt; Total:"&lt;&lt; total&lt;&lt;endl; //字符串常量 float <span class="arithmatex">\(\mathbf{v},\mathbf{r},\mathbf{h}\)</span> <span class="arithmatex">\(\begin{array}{l}\mathbf{r} = \boxed{2.5};\\ \mathbf{h} = \boxed{3.2};\\ \mathbf{v} = \boxed{3.14159} \end{array}\)</span> <span class="arithmatex">\(\star \texttt{r} *\texttt{r} *\texttt{h};\)</span> cout&lt;&lt;v&lt;&lt;endl; <br />
+}</p>
+<h1 id="_16">数据类型</h1>
+<h1 id="_17"> 内部数据类型</h1>
+<p> char int short long float double bool 指针 （ * )<br />
+ 在整型类型前可以用 unsigned 来修饰<br />
+ 内 存 映像 （ 3 2bit Intel 为 例 ）</p>
+<p>提倡用 sizeof ( ) 来确定数据类型或变量的大小</p>
+<p>1 byte</p>
+<p>char bool</p>
+<p>2 byte</p>
+<p>short</p>
+<p>4 byte</p>
+<p>int</p>
+<p>long</p>
+<p>flo at</p>
+<p>pointer ( * )</p>
+<p>8 byte</p>
+<p>double (long double)</p>
+<h1 id="enum">枚举类型—enum</h1>
+<p> 将需要的变量值一一列举出来， 便构成了一个枚举类型。<br />
+ 枚举类型的声明形式如下 ：</p>
+<p>enum 枚举类型名 {变量值列表};</p>
+<p>例如 ：</p>
+<p>enum weekday { sun, mon, tue, wed, thu, fri, sat } ;</p>
+<p> 枚举元素具有缺省整型值， 依次为 ： 0, 1 ,2, . . . . . .</p>
+<p> 可以在声明时另行指定枚举元素的值， 如 ：</p>
+<p>enum weekday <span class="arithmatex">\(\{ \mathsf { s u n } { = } 7\)</span> , mon= 1 , tue , wed, thu, fri , s at } ;</p>
+<p>//声 明 sun为 7 ， mon为 1 ， 以后顺序 加 1 ， sat为 6</p>
+<h1 id="_18"> 枚举类型应用说明 ：</h1>
+<p> 对枚举元素按常量处理， 不能对它们赋值。 例如， 不能写 ：<span class="arithmatex">\(\mathbf { s u n } = 0 ;\)</span> ;<br />
+ 整数值不能直接赋给枚举变量 如需要将整数赋值给枚举变量 应进行强制类型转换。<br />
+ 枚举值可以进行运算</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>weekday day;  
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>day = mon; // right  
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>day = 2; // error  
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>day = (weekday)2; // right  
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>int d = day; // d = 2  
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>d = d + fri; // d = 2+5  
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>if (d &gt; thu) { ... } 
+</code></pre></div>
+<h1 id="_19">数据类型</h1>
+<p> 用户定义数据类型/抽象数据类型 （UDT/ADT）</p>
+<p> 使用 struct / clas s 定义</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>struct Sample结构性
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>{
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    int iCount;
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    char * pName;
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>} sample; 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>class CComputer   
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>{ private: char \* m_pComputerName; public: void PowerOn(); void Startup();   
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>}；
+</code></pre></div>
+<p> 结构的概念</p>
+<p> 结构是由不同数据类型的数据组成的集合体。</p>
+<p> 声明结构类型</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>struct 结构名  
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>{  
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>数据类型 成员名1；  
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>数据类型 成员名2；  
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>：  
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>：  
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>数据类型 成员名n；  
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>}；
+</code></pre></div>
+<p> 成员引用 ：</p>
+<p>结构变量名.成员名 结构指针-&gt;成员名</p>
+<h1 id="_20">结构</h1>
+<h1 id="_21">举 例 ：</h1>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="c1">//学生信息结构体  </span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="c1">//学号  </span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w"> </span><span class="c1">//姓名  </span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="p">...</span><span class="w">  </span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>student Mary, Bob; // 结构变量 Mary、Bob
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>□结构变量的存储类型概念、它的寿命、可见性及使用范围与普通变量完全一致。
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>□结构变量说明在结构类型声明之后，二者也可同时进行。
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>□ 结构变量占内存大小可用 sizeof()求出。
+</code></pre></div>
+<h1 id="_22">联合</h1>
+<p> 联合的成员共享相同的地址空间<br />
+ 声明形式 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>union 联合名  
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>{  
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>数据类型 成员名1；  
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>数据类型 成员名2；  
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>：  
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>数据类型 成员名n；  
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>}；
+</code></pre></div>
+<p> 联合体类型变量说明的语法形式</p>
+<p>联合名 联合变量名 ；</p>
+<p> 引用形式 ：</p>
+<p>联合变量.成员名</p>
+<p>联合指针-&gt;成员名</p>
+<h1 id="_23">联合</h1>
+<p>例 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>union uarea { char c_data; short s_data; long 1_data; } 
+</code></pre></div>
+<p><img alt="" src="images/f29af6a7bfda6699775a87d6ccb9857764ac1ceac7e403a9988cfd3e99983e91.jpg" /></p>
+<h1 id="_24">匿名联合</h1>
+<p> 没有标记联合的名字， 只是声明一个成员项的集合， 这些成员项具有相同的内存地址， 可以由成员项的名字直接进行访问。<br />
+ 例 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>union { int i; float f; } 
+</code></pre></div>
+<p>// 在程序中可以这样使用 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>i=10; 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>f=2.2; 
+</code></pre></div>
+<p> 匿名联合通常作为结构的内嵌成员。</p>
+<h1 id="ty-ped-ef">ty ped ef 语句</h1>
+<p> 用于将一个标识符声明成某个数据类型的别名，然后将这个标识符当作数据类型使用。<br />
+语法形式</p>
+<p>typedef 已有类型名 新类型名 表;</p>
+<p> 例如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>typedef double area, volume;  
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>typedef int natural;  
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>natural i1, i2;  
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>area a;  
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>volume v; 
+</code></pre></div>
+<p>字符常量 （整型常数的一种 ）</p>
+<p> 单引号括起来的字符</p>
+<p> ‘ a ’ 等同 于 0x6 1 ( a 的 ASCII 码值为 97)<br />
+ ‘ D ’ 等同 于 0x44 ( D 的 ASCII 码值为 68)<br />
+ ‘ aD ’ 等同 于 0x446 1</p>
+<p>int i= ' ABCD ' ;</p>
+<p> 字符型 （整型的一种 ， 8bit ）</p>
+<p> 用来存放字符常量, 例 ：</p>
+<div class="arithmatex">\[
+\text {c h a r} \quad \mathrm {c} 1 = ^ {\prime} \mathrm {a} ^ {\prime}; \quad \mathrm {c} 2 = ^ {\prime} \mathrm {A} ^ {\prime};
+\]</div>
+<p>字符数据的使用方法</p>
+<p> 字符数据和整型数据之间可以运算<br />
+ 字符数据与整型数据可以互相赋值</p>
+<p><img alt="" src="images/06f190138179e3a0067896e355013109ec44d463164db9965e52d65e67ffcdc7.jpg" /></p>
+<h1 id="_25">数据类型——字符串</h1>
+<h1 id="_26">字符串常量</h1>
+<p>例 : "CHINA"</p>
+<p>" a"</p>
+<p>' a '</p>
+<p>C H I N A \0</p>
+<p>a \ 0</p>
+<p>a</p>
+<p>所以 ：</p>
+<div class="arithmatex">\[
+\begin{array}{c} \text {c h a r c ;} \end{array}
+\]</div>
+<div class="arithmatex">\[
+\mathbf {c} = \mathbf {\Omega} ^ {\prime \prime} \mathbf {a} ^ {\prime \prime};
+\]</div>
+<p><img alt="" src="images/b1d29d4dfcba6125d9086c18c5c5f61285fe3a76a12a047bd03850650f962a89.jpg" /></p>
+<div class="arithmatex">\[
+\mathrm {c h a r} ^ {*} \mathrm {p} = ^ {\prime \prime} \mathrm {C H I N A} ^ {\prime \prime};
+\]</div>
+<p>p 是一个</p>
+<p>地址指针</p>
+<p><img alt="" src="images/432228f8bae2ed1f4348c907be3ce082185e177f2010cdb19f290a3d54da3667.jpg" /></p>
+<h1 id="_27">数据类型——布尔型</h1>
+<p>布尔型变量的说明 ：</p>
+<p>例 ： bool flag ;</p>
+<p> 布尔型数据占用一个字节， 取值 ：</p>
+<p>只有 false （ 0 ） 和 true （ 1 ） 两个值</p>
+<p> 逻辑表达式的返回值类型 bool</p>
+<p> a &gt;= b</p>
+<p> bool 与整型相容， 可以参与整数运算</p>
+<p>l s e</p>
+<p>e</p>
+<p>int <span class="arithmatex">\({ \tt a } = 3\)</span> ;</p>
+<p><span class="arithmatex">\(\mathrm { ~ a ~ } = \mathrm { a } + \mathrm { f l a g } ; / / \mathrm { a } = 3 + 1 = 4\)</span></p>
+<h1 id="_28">变量初始化</h1>
+<p>例 ：</p>
+<p>int a = 3 ;</p>
+<p>double f = 3 . 5 6 ;</p>
+<p>char c = ' a ' ;</p>
+<p>int i ( 5 ) ;</p>
+<h1 id="_29">变量的存储类型</h1>
+<p> auto （变量的缺省类型）</p>
+<p> 临时存储变量， 具有生命周期， 生命期结束后存储空间可以被其他自动变量覆盖使用</p>
+<p> register</p>
+<p> 建议使用通用寄存器</p>
+<p> extern</p>
+<p> 声明该变量的定义不一定在本源文件中</p>
+<p> static</p>
+<p> 静态 在程序的整个生命周期 （执行期间 ） 有效</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">extern</span><span class="w"> </span><span class="nv">int</span><span class="w"> </span><span class="nv">e</span><span class="c1">;   </span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nv">void</span><span class="w"> </span><span class="nv">func</span><span class="p">(</span><span class="nv">int</span><span class="w"> </span><span class="nv">a,</span><span class="w"> </span><span class="nv">int</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span><span class="w">   </span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nv">{</span><span class="w"> </span><span class="nv">int</span><span class="w"> </span><span class="nv">i</span><span class="c1">; auto int j; static int x; register int y;   </span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nv">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>void<span class="w"> </span>func<span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nv">i</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="p">...</span><span class="w">  </span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">        </span>i<span class="o">++</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">        </span><span class="p">...</span><span class="w">  </span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<p> 简单表达式</p>
+<p> 常量、 变量、 函数标识符自身构成一个表达式1 000 a func( 1 00)</p>
+<p>复杂表达式</p>
+<p> 由表达式与运算符 （operator） 按照语法规则构成的a+ 1 000 b * func( 1 00)/ 1 000 <span class="arithmatex">\(\mathbf { c } = \mathbf { f u n c ( a + b ) } \% \ 1 0 0 0\)</span> <br />
+ 表达式的类型必须与运算符类型匹配</p>
+<p>float a; char * p ;(a+p) // 非法， 不支持浮点型与指针相加</p>
+<p> 表达式加 上 ( ) 也是表达式， 如 （ a+b)</p>
+<p> 计算表达式时， 首先计算 ( ) 内的表达式的值</p>
+<p> 每一个表达式都是有返回值的</p>
+<p> 表达式 c = func(a+b) % 1 000 的返 回 值等于 c 赋值的 结果</p>
+<h1 id="_30">表达式计算和类型转换</h1>
+<p> 一些二元运算符 （算术运算符、 关系运算符、 逻辑运算符、 位运算符和赋值运算符） 要求两个操作数的类型一致。<br />
+ 在算术运算和关系运算中 如果参与运算的操作数类型不一致编译系统会自动对数据进行转换 （即隐含转换） ， 基本原则是将低类型数据转换为高类型数据。<br />
+ 当参与运算的操作数必须是bool型时， 如果操作数是其它类型 ，编译系统会 自 动将非 0数据转换为true ， 0转换为 false 。<br />
+ 位运算的操作数必须是整数， 当二元位运算的操作数是不同类型的整数时， 也会自动进行类型转换，<br />
+ 赋值运算要求左值与右值的类型相同， 若类型不同， 编译系统会自动将右值转换为左值的类型。</p>
+<h1 id="_31">表达式计算和类型转换</h1>
+<p> 表达式求值过程中， 若操作数的数据类型不同， 则将自动向高级类型转换</p>
+<p> char-&gt;short-&gt;int-&gt;long-&gt;float-&gt;double</p>
+<p>int a; <br />
+char c; <br />
+float f; <br />
+double d; <br />
+double result <span class="arithmatex">\(= (a + c)*f / d;\)</span></p>
+<p><img alt="" src="images/ff9bf9b213e1856f598eae5a7659a228679d128491aab419bbb9e85e001f32c7.jpg" /></p>
+<h1 id="_32">类型转换</h1>
+<p> 不同类型数据进行混合运算时， C++编译器会自动进行类型转换。<br />
+ 为了避免不同的数据类型在运算中出现类型问题，应尽量使用同种类型数据。<br />
+ 可以采用强制类型转换</p>
+<h1 id="_33">强制类型转换</h1>
+<p>语法形式 ：</p>
+<p>类型说明符(表达式)</p>
+<p>或</p>
+<p>(类型说明符)表达式</p>
+<p> 强制类型转换的作用是将表达式的结果类型转换为类型说明符所指定的类型</p>
+<p>float c ;</p>
+<p>int a , b ;</p>
+<p>c = float ( a ) / float (b ) ;</p>
+<p>c = ( float) a / ( float) b ;</p>
+<h1 id="_34">运算符</h1>
+<table><tr><td>Operator</td><td>Name or Meaning</td><td>Associativity</td></tr><tr><td>::</td><td>Scope resolution</td><td>None</td></tr><tr><td>.</td><td>Member selection (object)</td><td>Left to right</td></tr><tr><td>-&gt;</td><td>Member selection (pointer)</td><td>Left to right</td></tr><tr><td>[ ]</td><td>Array subscript</td><td>Left to right</td></tr><tr><td>()</td><td>Function call</td><td>Left to right</td></tr><tr><td>()</td><td>member initialization</td><td>Left to right</td></tr><tr><td>++</td><td>Postfix increment</td><td>Left to right</td></tr><tr><td>--</td><td>Postfix decrement</td><td>Left to right</td></tr><tr><td>typeid()</td><td>type name</td><td>Left to right</td></tr><tr><td>const_cast</td><td>Type cast (conversion)</td><td>Left to right</td></tr><tr><td>dynamic_cast</td><td>Type cast (conversion)</td><td>Left to right</td></tr><tr><td>reinterpret_cast</td><td>Type cast (conversion)</td><td>Left to right</td></tr><tr><td>static_cast</td><td>Type cast (conversion)</td><td>Left to right</td></tr></table>
+
+<p>CComputer : : PowerOn ( )</p>
+<p>Comp . Mouse</p>
+<p>pComp- &gt;Mouse</p>
+<p>int array [ 1 0 ]</p>
+<p>printf ( " %d\n " , a ) ;</p>
+<p>CComputer Comp ( 1 0 ) ;</p>
+<p>a++</p>
+<p>a - -</p>
+<p>typeid ( Comp )</p>
+<h1 id="_35">运算符</h1>
+<table><tr><td>sizeof</td><td>Size of object or type</td><td>Right to left</td><td>sizeof(CComputer)</td></tr><tr><td>++</td><td>Prefix increment</td><td>Right to left</td><td>++a</td></tr><tr><td>--</td><td>Prefix decrement</td><td>Right to left</td><td>--a</td></tr><tr><td>~</td><td>One&#x27;s complement</td><td>Right to left</td><td>~a</td></tr><tr><td>!</td><td>Logical not</td><td>Right to left</td><td>!a</td></tr><tr><td>-</td><td>Unary minus</td><td>Right to left</td><td>-a</td></tr><tr><td>+</td><td>Unary plus</td><td>Right to left</td><td>+a</td></tr><tr><td>&amp;</td><td>Address-of</td><td>Right to left</td><td>&amp;Comp</td></tr><tr><td>*</td><td>Indirection</td><td>Right to left</td><td>*pComp</td></tr><tr><td>new</td><td>Create object</td><td>Right to left</td><td>pComp = new Computer;</td></tr><tr><td>delete</td><td>Destroy object</td><td>Right to left</td><td>delete pComp;</td></tr><tr><td>()</td><td>Cast</td><td>Right to left</td><td>(unsigned) a</td></tr><tr><td>.*</td><td>Pointer-to-member (objects)</td><td>Left to right</td><td>Comp.*Startup()</td></tr><tr><td>- &gt;*</td><td>Pointer-to-member (pointers)</td><td>Left to right</td><td>pComp-&gt;*Startup()</td></tr></table>
+
+<h1 id="_36">运算符</h1>
+<table><tr><td>*</td><td>Multiplication</td><td>Left to right</td></tr><tr><td>/</td><td>Division</td><td>Left to right</td></tr><tr><td>%</td><td>Modulus</td><td>Left to right</td></tr><tr><td>+</td><td>Addition</td><td>Left to right</td></tr><tr><td>-</td><td>Subtraction</td><td>Left to right</td></tr><tr><td>&lt;&lt;</td><td>Left shift</td><td>Left to right</td></tr><tr><td>&gt;&gt;</td><td>Right shift</td><td>Left to right</td></tr><tr><td>&lt;</td><td>Less than</td><td>Left to right</td></tr><tr><td>&gt;</td><td>Greater than</td><td>Left to right</td></tr><tr><td>&lt;=</td><td>Less than or equal to</td><td>Left to right</td></tr><tr><td>&gt;=</td><td>Greater than or equal to</td><td>Left to right</td></tr><tr><td>==</td><td>Equality</td><td>Left to right</td></tr><tr><td>!=</td><td>Inequality</td><td>Left to right</td></tr><tr><td>&amp;</td><td>Bitwise AND</td><td>Left to right</td></tr><tr><td>^</td><td>Bitwise exclusive OR</td><td>Left to right</td></tr><tr><td>|</td><td>Bitwise inclusive OR</td><td>Left to right</td></tr></table>
+
+<table><tr><td>&amp;&amp;</td><td>Logical AND</td><td>Left to right</td></tr><tr><td>||</td><td>Logical OR</td><td>Left to right</td></tr><tr><td>e1?e2:e3</td><td>Conditional</td><td>Right to left</td></tr><tr><td>=</td><td>Assignment</td><td>Right to left</td></tr><tr><td>*=</td><td>Multiplication assignment</td><td>Right to left</td></tr><tr><td>/=</td><td>Division assignment</td><td>Right to left</td></tr><tr><td>%=</td><td>Modulus assignment</td><td>Right to left</td></tr><tr><td>+=</td><td>Addition assignment</td><td>Right to left</td></tr><tr><td>-==</td><td>Subtraction assignment</td><td>Right to left</td></tr><tr><td>&lt;&lt;=</td><td>Left-shift assignment</td><td>Right to left</td></tr><tr><td>&gt;&gt;=</td><td>Right-shift assignment</td><td>Right to left</td></tr><tr><td>&amp;=</td><td>Bitwise AND assignment</td><td>Right to left</td></tr><tr><td>|=</td><td>Bitwise inclusive OR assignment</td><td>Right to left</td></tr><tr><td>^=</td><td>Bitwise exclusive OR assignment</td><td>Right to left</td></tr><tr><td>throw ex;</td><td>throw expression</td><td>Right to left</td></tr><tr><td>,</td><td>Comma</td><td>Left to right</td></tr></table>
+
+<h1 id="s-i-zeof">s i zeof 运算符</h1>
+<p> 用于计算某种类型的对象在内存中所占的字节数。<br />
+语法形式</p>
+<p>sizeof (类型名 ) <br />
+sizeof (变量名 ) <br />
+sizeof (表达式)</p>
+<p>结果值 ：</p>
+<p>“类型名” 所指定的类型或 “表达式” 的结果类型所占的字节数。</p>
+<p> 例 ：</p>
+<p>sizeof (short)</p>
+<p>sizeof (x)</p>
+<h1 id="_37">基本算术运算符</h1>
+<ul>
+<li>
+<ul>
+<li>/ (若整数相除， 结果取整)</li>
+</ul>
+</li>
+</ul>
+<p>% （取余， 操作数为整数）</p>
+<h1 id="_38"> 优先级与结合性</h1>
+<p>先乘除， 后加减， 同级自左至右</p>
+<h1 id="-"> ++, - - （ 自 增 、 自 减 ）</h1>
+<p>例 ： i++ - - j</p>
+<p> 举例</p>
+<div class="arithmatex">\[
+n = n + 5
+\]</div>
+<p> 表达式的类型 ： = 左边对象的类型<br />
+ 表达式的值 ： = 左边对象被赋值后的值<br />
+复合附值运算符 ：</p>
+<div class="arithmatex">\[
++ = - = * = / = \% = \ll = \gg = \&amp; = \wedge = \quad | =
+\]</div>
+<p> 例</p>
+<p>a+=3 等价于 a=a+3</p>
+<p>x<em>=y+8 等价于 x=x</em> ( y+8 )</p>
+<h1 id="_39">赋值表达式</h1>
+<p>a=5 表达式值为5</p>
+<p>a=b=c=5 表达式值为 5 ， a,b,c均 为 5</p>
+<p>相当于 <span class="arithmatex">\(\mathbf { a } = ( \mathbf { \nabla } \mathbf { b } = ( \mathbf { c } = 5 ) \mathbf { \nabla } )\)</span></p>
+<p>a=5+(c=6) 表达式值为 1 1 ， a为 1 1 ， c为 6</p>
+<p>a=(b=4)+(c=6) 表达式值为 1 0 ， a为 1 0 ， b为 4 ， c为 6</p>
+<p>a=(b= 1 0)/(c=2) 表达式值为 5 ， a为 5 ， b为 1 0 ， c为 2</p>
+<p>a+=a-=a<em> a 相 当 于 a=a+(a=a-a</em> a)</p>
+<p>注 ： = 是向右结合的</p>
+<h1 id="_40"> 格式</h1>
+<p>表达式1， 表达式2</p>
+<h1 id="_41"> 表达式的计算</h1>
+<p>先计算表达式1， 再计算表达式2，</p>
+<p>整个逗号表达式的结果表达式2的值</p>
+<h1 id="_42"> 例</h1>
+<p>a=3 * 5 , a*4 最终结果为60</p>
+<h1 id="_43">关系表达式</h1>
+<p> 关系运算是比较简单的一种逻辑运算 优先次序为 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="o">&lt;</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+</code></pre></div>
+<p>优先级相同 （高）</p>
+<p>优先级相同 （低）</p>
+<p> 关系表达式是一种最简单的逻辑表达式</p>
+<p>其结果类型为 bool 值为 true 或 false。</p>
+<p> 例 如 ： a&gt;b， c&lt;=a+b， x+y==3</p>
+<p>逻辑运算符</p>
+<p>! （ 非 ） &amp; &amp; （ 与 ） | | （ 或 ）</p>
+<p>优先次序 ： 高 低</p>
+<p>逻辑表达式</p>
+<p>例 如 ： (a&gt;b) &amp;&amp; (x&gt;y)</p>
+<p>其结果类型为 bool 值为 true 或 false</p>
+<h1 id="_44"> 一般形式</h1>
+<p>表达式1 ？ 表达式2 表达式3</p>
+<h1 id="_45">执行顺序</h1>
+<p> 先求解表达式1，<br />
+ 若 表达式 1 的值为 true （ 非 0 ） ， 则 求解 表达式2 ，表达式2 的值为最终结果<br />
+ 若 表达式1 的值为false （0 ） 则求解表达式3表达式3的值为最终结果</p>
+<h1 id="_46"> 例 ：</h1>
+<div class="arithmatex">\[
+x = a &gt; b ? a : b;
+\]</div>
+<p>//求出a和b中较大的数</p>
+<h1 id="_47">位运算</h1>
+<h1 id="_48"> 按位与 (&amp;)</h1>
+<p>将两个运算量的每一个位进行逻辑与操作<br />
+ 举例 ： 计算 3 &amp; 5</p>
+<p>3 ： 0 0 0 0 0 0 1 1<br />
+5 ： (&amp;) 0 0 0 0 0 1 0 1</p>
+<p>3 &amp; 5 : 0 0 0 0 0 0 0 1</p>
+<h1 id="_49"> 按位或 ( | )</h1>
+<p>将两个运算量的每一个位进行逻辑或操作<br />
+ 举例 ： 计算 3 | 5</p>
+<p>3 ： 0 0 0 0 0 0 1 1<br />
+5 ： ( | ) 0 0 0 0 0 1 0 1</p>
+<p>3 | 5 : 0 0 0 0 0 1 1 1</p>
+<h1 id="_50">位运算</h1>
+<p>按位异或 （ ^ ） , 即 半加</p>
+<p> 两个操作数进行异或 ：</p>
+<p>若对应位相同， 则结果该位为 0，</p>
+<p>若对应位不同， 则结果该位为 1，</p>
+<p> 举例 ： 计算 0 7 1 ^ 0 5 2</p>
+<p>0 7 1 : 0 0 1 1 1 0 0 1</p>
+<p>0 5 2 ： ( ^ ) 0 0 1 0 1 0 1 0</p>
+<p>0 7 1 ^ 0 5 2 : 0 0 0 1 0 0 1 1</p>
+<p> 使用按位异或操作可以将操作数中的若干指定位翻转</p>
+<p>按位取反 （ ~ ）</p>
+<p>例 ： 0 2 5 ： 00000000000 1 0 1 0 1</p>
+<p>~ 0 2 5 ： 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0</p>
+<h1 id="_51">位运算</h1>
+<p> 左移运算 （&lt;&lt; ）</p>
+<p>左移后， 低位补0， 高位舍弃。</p>
+<p>右移运算 （ &gt;&gt; ）</p>
+<p>右移后， 低位 ： 舍弃</p>
+<p>高位 ： 无符号数 (unsigned) ： 补0</p>
+<p>有符号数 ： 补 “符号位”</p>
+<h1 id="c_6">C + + 语句</h1>
+<p>声明语句 <br />
+表达式语句<br />
+选择语句 <br />
+循环语句 <br />
+跳转语句 <br />
+复合语句 <br />
+标号语句</p>
+<p>语句之间需要使用分隔符；</p>
+<p>int a = - 1 ;</p>
+<p>i f ( a &lt; 0 ) a = 0 ;</p>
+<p>for ( int <span class="arithmatex">\(\yen 0\)</span> ; i&lt; 1 0 ; i++ )</p>
+<p>{</p>
+<p>a ++ ;</p>
+<p>a += i ;</p>
+<p>}</p>
+<p>i f ( a &lt; 0 ) a = 0 ;</p>
+<h1 id="c_7">C++ 语句</h1>
+<p>声明语句 ： 声明或定义变量、 函数等</p>
+<p>int a ;</p>
+<p>extern void func ( int x ) ;</p>
+<p>表达式语句 ：</p>
+<p>a = 1 0 0 ;</p>
+<p> 将多个语句用大括号包围， 便构成一个复合语句 ：</p>
+<p>sum <span class="arithmatex">\(=\)</span> sum+i; i++;</p>
+<h1 id="_52">算法的基本控制结构</h1>
+<p>顺序结构<br />
+分支结构<br />
+循环结构</p>
+<h1 id="i-f">分支语句 i f</h1>
+<p>if (表达式) 语句 ；</p>
+<p>i f ( x&gt;y )</p>
+<p>cout &lt;&lt; x ;</p>
+<p>if (表达 式) 语句 1 ； else 语句 2 ；</p>
+<p>i f ( x&gt;y )</p>
+<p>cout &lt;&lt; x ;</p>
+<p>el se</p>
+<p>cout &lt;&lt; y ;</p>
+<p>if <span class="arithmatex">\((\mathbf{x} = = 1)\)</span> { <br />
+} <br />
+else if <span class="arithmatex">\((\mathbf{x} = = 2)\)</span> { <br />
+} <br />
+else if <span class="arithmatex">\((\mathbf{x} = = 3)\)</span> { <br />
+} <br />
+else <br />
+{ <br />
+}</p>
+<h1 id="i-f_1">分支语句 i f</h1>
+<p>if <span class="arithmatex">\(\mathbf{\mathbf{x}} = = 1\)</span> cout <span class="arithmatex">\(&lt;  &lt;   \textit{It'sOK!"} &lt;   &lt;   \textit{endl};\)</span> else cout <span class="arithmatex">\(&lt;  &lt;   \textit{It'sWrong!"} &lt;   &lt;   \textit{endl};\)</span></p>
+<p>if <span class="arithmatex">\((\mathbf{x} = 1)\)</span> cout <span class="arithmatex">\(&lt;  &lt;   \text{"It's OK!"} &lt;   &lt;   \text{endl};\)</span> else cout <span class="arithmatex">\(&lt;  &lt;   \text{"It's Wrong!"} &lt;   &lt;   \text{endl};\)</span></p>
+<p>错误使用</p>
+<p>if <span class="arithmatex">\((1 == x)\)</span> cout &lt;&lt; "It's OK!" &lt;&lt; endl;<br />
+else<br />
+cout &lt;&lt; "It's Wrong!" &lt;&lt; endl;</p>
+<p>推荐使用</p>
+<h1 id="sw-i-t-ch">分支语句 sw i t ch</h1>
+<p><img alt="" src="images/6aab1467081b90557e8b64f04308c02a05e7c8bcb241000e2ee37f5174b10a5a.jpg" /></p>
+<h1 id="_53">一般形式</h1>
+<p>sw i t ch ( 表达 式)<br />
+可以是整型、 字符型、 枚举型<br />
+每个常量表达式的值不能相同， 次序不影响执行结果。<br />
+可以是多个语句， 可不必 用 { } 。<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>{ case 常量表达式1：语句1 case 常量表达式2：语句2 case 常量表达式n：语句n default： 语句n+1 }
+</code></pre></div></p>
+<h1 id="_54"> 注 ：</h1>
+<p>以case中的常量表达式值为入口标号， 由此开始顺序执行。 因 此， 每个 case 分支最后应该加break语句。</p>
+<h1 id="_55">形式</h1>
+<p>wh i l e (表达式) 语句</p>
+<p>可以是复合语句</p>
+<p><img alt="" src="images/e5da8d939f7713af2ee397aa695776cdbb8851f1539a52a9950da848ba08693b.jpg" /></p>
+<h1 id="do-wh-i-l-e">循环语句 do-wh i l e</h1>
+<h1 id="_56">形式</h1>
+<p><img alt="" src="images/5a5eec5f89e64c2f32b6eb1286922f73186634a98f5fc2977b1fd2ef0854519b.jpg" /></p>
+<p><img alt="" src="images/ef57a351e7846f6be6f982e393e3cf8171ea0793aa2aeb3c64bb04806c96fc3f.jpg" /></p>
+<h1 id="_57">语法形式</h1>
+<p>for (表达式1 ； 表达式2 ； 表达式3) 语句</p>
+<p><img alt="" src="images/c70e7525a523583f630472ad954b2bf9bad0106e00ff0d2f8772fbd0adc5e0e3.jpg" /></p>
+<h1 id="break-c-ont-i-nue">break 和 c ont i nue 语句</h1>
+<p>break 语句</p>
+<p>使程序从循环体和switch语句内跳出， 继续执行逻辑上的下一条语句。 不宜用在别处。</p>
+<p>continue 语句</p>
+<p>结束本次循环， 接着判断是否执行下一次循环。</p>
+<h1 id="_58">函数</h1>
+<h1 id="_59">函数的声明</h1>
+<h1 id="_60">函数声明的语法形式</h1>
+<p><img alt="" src="images/d1b1b8a3c487cb2d3d151230ad4a3900bd8956dbe1ff5efd03019974a2a4da4d.jpg" /></p>
+<p> 形式参数表</p>
+<div class="arithmatex">\[
+&lt;   \text {t y p e} _ {1} &gt; \text {n a m e} _ {1}, &lt;   \text {t y p e} _ {2} &gt; \text {n a m e} _ {2}, \dots , &lt;   \text {t y p e} _ {n} &gt; \text {n a m e} _ {n}
+\]</div>
+<p>函数的返回值</p>
+<p> 由 return 语句给 出 ， 例 如 ：return 0 ；<br />
+ 无返回值的函数 （void类型） ， 不必写return语句</p>
+<p> 调用前必须先定义该函数， 或声明函数原型 ：</p>
+<p> 函数原型说明 ：</p>
+<p>类型标识符 被调用函数名 （含类型说明的形参表） ;</p>
+<p>例如 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="ow">void</span><span class="w"> </span><span class="nx">func</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w"> </span><span class="kr">float</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="kr">float</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+<p>调用形式</p>
+<p>函数名 （实参列表）</p>
+<p>嵌套调用</p>
+<p> 函数可以嵌套调用， 但不允许嵌套定义。</p>
+<p>递归调用</p>
+<p> 函数直接或间接调用 自身。</p>
+<p><img alt="" src="images/6adcd280775442648817798c1c98a7e19ae0c1f26dba2597eb2b20fe7fc68b45.jpg" /></p>
+<h1 id="_61">嵌套调用</h1>
+<h1 id="_62">函数的声明与使用</h1>
+<p><img alt="" src="images/795626401feb866429c7030f8703c2afe265d03d9a68db50ecd03b28e96493be.jpg" /></p>
+<h1 id="xn">例 : 求x的n次方的函数</h1>
+<p>include<iostream> using namespace std; double power(double x, int n); //函数原型 int main(){ double x; int n; cout &lt;&lt; "please input x: "; cin &gt;&gt; x; cout &lt;&lt; "please input n: "; cin &gt;&gt; n; cout &lt;&lt; x &lt;&lt; "^(" &lt;&lt; n &lt;&lt; ")=" &lt;&lt; power(x, n) &lt;&lt; endl; } double power(double x, int n) { if <span class="arithmatex">\((\mathrm{n} == 1)\)</span> return x; if <span class="arithmatex">\((\mathrm{n} == 0)\)</span> return 1; if <span class="arithmatex">\((\mathrm{n} &lt; 0)\)</span> return 1/power(x, -n); //递归调用 return power(x, n-1) * x; //递归调用</p>
+<h1 id="_63">函数的参数传递机制</h1>
+<p> 在函数被调用时才分配形参的存储单元。<br />
+ 实参可以是常量、 变量或表达式。<br />
+ 实参类型必须与形参相符。<br />
+ 值传递时是传递参数值， 即单向传递。</p>
+<p>调 用 者 ： D = power(A, 3 )</p>
+<p><img alt="" src="images/f1c5851e5372eeda69b64e751db6ea54f0dbf7a438258c376e09ff4d74711f4e.jpg" /></p>
+<p><img alt="" src="images/4aea9c9a38c7f6b8e0fe6ee599c54b399d0a22cff8fb859ca5f4d0143efd21ee.jpg" /></p>
+<p>被调函数：</p>
+<p>double power(double X, int N)</p>
+<h1 id="_64">例 ： 参数传递</h1>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">include</span><span class="o">&lt;</span><span class="n">iostream</span><span class="o">&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; (a,b) = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="n">Swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; (a,b) = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">输出</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<p>输出结果 ：</p>
+<p>( a , b ) = 5 , 1 0</p>
+<p>( a , b ) = 5 , 1 0</p>
+<h1 id="_65">例 ： 参数传递 （使用指针）</h1>
+<p>include<iostream> using namespace std; void Swap(int *a,int *b); int main() { int a(5)，b(10); cout <span class="arithmatex">\(\ll\)</span> <span class="arithmatex">\(\text{气} _ { \text{a} } , \text{b} ) = \text{气}\)</span> <span class="arithmatex">\(\ll a &lt;   &lt;   \text{气} _ { \text{a} } &lt;   &lt;   \text{气} _ { \text{气} } , \text{气}\)</span> <span class="arithmatex">\(\ll b &lt;   &lt;   \text{气} _ { \text{b} } &lt;   &lt;   \text{气} _ { \text{气} } , \text{气}\)</span> Swap(&amp;a,&amp;b); cout <span class="arithmatex">\(\ll\)</span> <span class="arithmatex">\(\text{气} _ { \text{a} } , \text{气} _ { \text{气} } = \text{气}\)</span> <span class="arithmatex">\(\ll a &lt;   &lt;   \text{气} _ { \text{a} } &lt;   &lt;   \text{气} _ { \text{气} } , \text{气}\)</span> <span class="arithmatex">\(\ll b &lt;   &lt;   \text{气} _ { \text{b} } &lt;   &lt;   \text{气} _ { \text{气} } , \text{气}\)</span> return 0; } void Swap(int *a,int *b) { int t; t <span class="arithmatex">\(\equiv\)</span> *a; *a <span class="arithmatex">\(\equiv\)</span> *b; *b <span class="arithmatex">\(\equiv\)</span> t; }</p>
+<p>输出结果 ：</p>
+<p>( a , b ) = 5 , 1 0</p>
+<p>( a , b ) = 1 0 , 5</p>
+<h1 id="_66">数据类型： 引 用</h1>
+<p>引用(&amp;)是标识符的别名 例如:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="c1">//建立int型的引用ri,初始化为变量i的引用  </span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ri</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="c1">//建立int型的引用ri,初始化为变量i的引用  </span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">//相当于 i=j;  </span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">ri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="c1">//相当于 f=j;  </span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="kt">double</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="n">rf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100.5</span><span class="p">;</span><span class="w"> </span><span class="c1">//相当于 f=100.5;</span>
+</code></pre></div>
+<p>声明一个引用时， 必须同时对它进行初始化， 使它指向一个已存在的变量 （对象） 。<br />
+一旦一个引用被初始化后， 就不能改为指向其它对象。<br />
+引用可以作为函数的参数进行传递 也可以作为返回值</p>
+<p>void swap ( int&amp; i , int&amp; j ) { . . . }</p>
+<h1 id="_67">例 ： 参数传递 （使用 引用 ）</h1>
+<p>include<iostream>using namespace std;void Swap(int&amp; i, int&amp; j);int main()int a=5,b=10;cout <span class="arithmatex">\(\ll \ll \forall (a,b) = \forall \ll a\ll \forall ,\forall \ll b\ll \forall\)</span> endl;Swap(a,b);cout <span class="arithmatex">\(\ll \ll \forall (a,b) = \forall \ll a\ll \forall ,\forall \ll b\ll \forall\)</span> endl;return 0;<br />
+}<br />
+void Swap(int&amp; i, int&amp; j) //使i成为a的别名；使j成为b的别名。<br />
+{int t;t=i; <span class="arithmatex">\(\mathbf{i} = \mathbf{j}\)</span> <span class="arithmatex">\(\mathbf{j} = \mathbf{t}\)</span> ：输出结果： <span class="arithmatex">\((a,b) = 5,10\)</span> <span class="arithmatex">\((a,b) = 10,5\)</span></p>
+<p> 声 明 时使用 关键字 inline。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>inline void Swap(int&amp; a, int&amp; b)  
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>{  
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    int t;  
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    t = a; a = b; b = t;  
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>}  
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>int main()  
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>{  
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    int a(5), b(10);  
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    Swap(a, b);  
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>    return 0;  
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>} 
+</code></pre></div>
+<p> 编译时在调用处用函数体进行替换,节省了参数传递、控制转移等开销。</p>
+<p> 内联函数的声明必须出现在内联函数第一次被调用之前</p>
+<h1 id="_68">默认参数</h1>
+<p> 函数在声明时可以预先给出默认的形参值， 调用时如给出实参， 则采用实参值， 否则采用预先给出的默认形参值。<br />
+ 例 如 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">}</span><span class="w">  </span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w">  </span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">    </span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span><span class="w"> </span><span class="c1">// 10+20  </span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">    </span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// 10+6  </span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">    </span><span class="n">add</span><span class="p">();</span><span class="w"> </span><span class="c1">// 5+6  </span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<h1 id="_69">默认参数</h1>
+<p> 默认形参值必须从右向左顺序声明， 并且在默认形参值的右面不能有非默认形参值的参数。 因为调用时实参取代形参是从左向右的顺序。<br />
+ 例 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="o">=</span><span class="mi">6</span><span class="p">);</span><span class="w"> </span><span class="c1">//正确  </span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"> </span><span class="c1">//错误  </span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="o">=</span><span class="mi">6</span><span class="p">);</span><span class="w"> </span><span class="c1">//错误 </span>
+</code></pre></div>
+<h1 id="_70">默认参数</h1>
+<p> 若调用出现在函数体实现之后 默认参数可在函数实现时给出<br />
+ 默认参数值也可以在函数原型中给出 但默认参数只能定义一次</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nv">int</span><span class="w"> </span><span class="nv">add</span><span class="p">(</span><span class="nv">int</span><span class="w"> </span><span class="nv">x,</span><span class="w"> </span><span class="nv">int</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span><span class="c1">;  </span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nv">void</span><span class="w"> </span><span class="nv">func</span><span class="p">()</span><span class="w">  </span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nv">{</span><span class="w">  </span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">    </span><span class="nv">add</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="c1">;  </span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nv">}</span><span class="w">  </span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nv">int</span><span class="w"> </span><span class="nv">add</span><span class="p">(</span><span class="nv">int</span><span class="w"> </span><span class="nv">x=5,</span><span class="w"> </span><span class="nv">int</span><span class="w"> </span><span class="nv">y=6</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="nv">{</span><span class="w">  </span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">    </span><span class="nb">return</span><span class="w"> </span><span class="nv">x+y</span><span class="c1">;  </span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="nv">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">6</span><span class="p">);</span><span class="w">  </span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w">  </span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">    </span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// 10+6  </span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="n">add</span><span class="p">();</span><span class="w"> </span><span class="c1">// 5+6  </span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="p">}</span><span class="w">  </span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">  </span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">()</span><span class="w">  </span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">    </span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">  </span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">    </span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">//不能使用默认参数  </span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>int add(int x=5, int y=6);  
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>int main()  
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>{  
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    add(10); // 10+6  
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    add(); // 5+6  
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    return 0;  
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>}  
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>int add(int x, int y)  
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>{  
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>    return x+y;  
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>} 
+</code></pre></div>
+<h1 id="_71">默认参数</h1>
+<p> 在相同的作用域内， 默认形参值的说明应保持唯一， 但如果在不同的作用域内 允许说明不同的默认形参。<br />
+ 例 ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nv">int</span><span class="w"> </span><span class="nv">add</span><span class="p">(</span><span class="nv">int</span><span class="w"> </span><span class="nv">x=1,int</span><span class="w"> </span><span class="nv">y=2</span><span class="p">)</span><span class="c1">;  </span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="nv">int</span><span class="w"> </span><span class="nv">main</span><span class="p">()</span><span class="w">  </span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="nv">{</span><span class="w">  </span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">    </span><span class="nv">int</span><span class="w"> </span><span class="nv">add</span><span class="p">(</span><span class="nv">int</span><span class="w"> </span><span class="nv">x=3,int</span><span class="w"> </span><span class="nv">y=4</span><span class="p">)</span><span class="c1">;  </span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">    </span><span class="nv">add</span><span class="p">()</span><span class="c1">; //使用局部默认形参值（实现3+4）  </span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">    </span><span class="nb">return</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="nv">}</span><span class="w">  </span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="nv">void</span><span class="w"> </span><span class="nv">fun</span><span class="p">(</span><span class="nv">void</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="nv">{</span><span class="w">  </span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="w">    </span><span class="o">...</span><span class="w">  </span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="w">    </span><span class="nv">add</span><span class="p">()</span><span class="c1">; //使用全局默认形参值（实现1+2）  </span>
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="nv">}</span>
+</code></pre></div>
+<p> C++允许功能相近的函数在相同的作用域内以相同函数名声明，从而形成重载<br />
+ 实际意义和功能相同或相近， 方便使用， 便于记忆<br />
+ 编译器自动根据参数类型、 个数等调用相应的函数</p>
+<p><img alt="" src="images/c085ae0e8058d1dbd3777f4cd6aece6151c2747b184c2652038f5b7b474d506d.jpg" /></p>
+<h1 id="_72">函数重载</h1>
+<p>重载函数的形参必须不同: 个数不同或类型不同。<br />
+编译程序将根据实参和形参的类型及个数的最佳匹配来选择调用哪一个函数。</p>
+<p>int add ( int x , int y ) ; b ) ; int add ( int a , int 编译器不以形参名来区分重载</p>
+<p>int add ( int x , int y ) ; void add ( int x , int y ) ; 编译器不以返回值来区分重载</p>
+<p>不要将不同功能的函数声明为重载函数， 以免出现调用结果的误解、 混淆</p>
+<h1 id="_73">操作符的重载</h1>
+<p>在 C++ 中 操作符与函数一样 可以进行重载</p>
+<p>type operator operator-symbol ( parameter-list )</p>
+<p>include<iostream> <br />
+using namespace std; <br />
+struct complex <br />
+{ double re; double im; <br />
+}； <br />
+//实现复数a+b <br />
+complex operator + (complex a, complex b) <br />
+{ complex result; result.re <span class="arithmatex">\(=\)</span> a.re <span class="arithmatex">\(^+\)</span> b.re; result.im <span class="arithmatex">\(=\)</span> a.im <span class="arithmatex">\(^+\)</span> b.im; return result; <br />
+}</p>
+<h1 id="_74">输入/输出操作</h1>
+<p>向标准输出设备 （显示器） 输出</p>
+<p>例 ：</p>
+<p>int x ;</p>
+<p>cout &lt;&lt; “x=“ &lt;&lt; x ; // 表达式语句</p>
+<p>从标准输入设备 （键盘） 输入</p>
+<p>例 ：</p>
+<p>int x ;</p>
+<p>cin &gt;&gt; x ; // 表达式语句</p>
+<p>其中 ， cin、 cout 是在 C++ 流式 IO 库中 定义的</p>
+<h1 id="io">I/O流的概念</h1>
+<p> 当程序与外界环境进行信息交换时， 存在着两个对象，一个是程序中的对象， 另一个是文件对象<br />
+ 流是一种抽象， 它负责在数据的生产者和数据的消费者之间建立联系， 并管理数据的流动<br />
+ 程序建立一个流对象 并指定这个流对象与某个文件对象建立连接 程序操作流对象 流对象通过文件系统对所连接的文件对象产生作用<br />
+ 流对象是程序中的对象与文件对象进行交换的界面<br />
+ 读操作在流数据抽象中被称为 （从流中 ） 提取， 写操作被称为 （向流中 ） 插入</p>
+<h1 id="_75">输出流</h1>
+<p>重要的输出流类 （C++标准库中预定义）</p>
+<p> ostream <br />
+ ofstream</p>
+<p>ostream最适合于顺序文本模式输出<br />
+预先定义了如下的输出流对象:</p>
+<p>cout 标准输出<br />
+cerr 标准错误输出， 没有缓冲， 发送给它的内容立即被输出。<br />
+clog 类似于cerr， 但是有缓冲， 缓冲区满时被输出。</p>
+<h1 id="_76">插入运算符 （ &lt; &lt; ）</h1>
+<p>插入 (&lt;&lt;) 运算符对所有标准C++数据类型预先进行了操作符的重载<br />
+用于将数据转换成输出字节串的形式， 传送到一个输出流对象</p>
+<h1 id="_77">控制输出格式</h1>
+<h1 id="_78">控制输出宽度</h1>
+<p> 为了调整输出， 可以通过在流中放入setw操纵符或调用width成员函数为每个项指定输出宽度。</p>
+<h1 id="wi-dth"> 例 ： 使用 wi dth 控制 输出宽度</h1>
+<p>include<iostream> using namespace std; int main() double values[] <span class="arithmatex">\(=\)</span> {1.23,35.36,653.7,4358.24}; for (int <span class="arithmatex">\(\mathrm{i} = 0\)</span> .i4;i++) cout.width(10); cout&lt;&lt;values[i]&lt;&lt;endl; } }</p>
+<p>输出结果 :</p>
+<p>1 . 2 3</p>
+<p>3 5 . 3 6</p>
+<p>6 5 3 . 7</p>
+<p>4 3 5 8 . 2 4</p>
+<h1 id="_79">例 ： 使用*填充</h1>
+<p>include<iostream> using namespace std; int main() double values[] <span class="arithmatex">\(=\)</span> {1.23,35.36,653.7,4358.24}; for(int <span class="arithmatex">\(\mathbf{i} = 0\)</span> ； <span class="arithmatex">\(\mathbf{i} &lt;   4\)</span> ； <span class="arithmatex">\(\mathbf{i} + + )\)</span> cout.width(10); cout fills <span class="arithmatex">\(\mathbf{\Psi}^{*}\mathbf{\Psi})\)</span> cout&lt;&lt;values[i]&lt;&lt;endl; 输出结果： } 1</p>
+<p>输出结果：</p>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>1 . 2 3</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>3 5 . 3 6</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>6 5 3 . 7</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>4 3 5 8 . 2 4</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="setw">例 ： 使用setw指定宽度</h1>
+<p>include<iostream>   </p>
+<h1 id="include">include <iomanip></h1>
+<p>using namespace std; <br />
+int main() <br />
+{ double values[] <span class="arithmatex">\(=\)</span> {1.23,35.36,653.7,4358.24} char *names[] <span class="arithmatex">\(=\)</span> {"Zoot","Jimmy","Al","Stan"} for (int <span class="arithmatex">\(\mathrm{i} = 0\)</span> ;i&lt;4;i++) { cout <span class="arithmatex">\(&lt;  &lt;\)</span> setw(6) <span class="arithmatex">\(&lt;  &lt;\)</span> names[i]; cout <span class="arithmatex">\(&lt;  &lt;\)</span> setw(10) <span class="arithmatex">\(&lt;  &lt;\)</span> values[i] <span class="arithmatex">\(&lt;  &lt;\)</span> endl; <br />
+} <br />
+}</p>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Zoot 1.23  
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>Jimmy 35.36  
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>Al 653.7  
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>Stan 4358.24 
+</code></pre></div>
+<h1 id="ofst-re-a-m">ofst re a m</h1>
+<p> ofs tream 类支持磁盘文件输出<br />
+ 若需要一个只输出的磁盘文件， 可以构造一个of s tr eam类的 对象<br />
+ 如果在构造函数中指定文件名和模式 当构造这个文件时该文件是自动打开的</p>
+<p> o f s t r e am myF i l e ( " f i l ename " , i o smo de ) ;</p>
+<p> 可以在调用默认构造函数之后使用open成员函数打开文件</p>
+<p>ofs tream myF i l e ; //声 明 一个静态输出文件流对象myF i l e . op en ( " f i l ename " , i o smo de ) ;</p>
+<p>//打开文件， 使流对象与文件建立联系</p>
+<p> open函 数</p>
+<p>把流与一个特定的磁盘文件关联起来。</p>
+<p>需要指定打开模式。</p>
+<p> put函 数</p>
+<p>把一个字符写到输出流中。</p>
+<p> write函 数</p>
+<p>把内存中的一块内容写到一个输出文件流中</p>
+<p> seekp和 tellp 函 数</p>
+<p>操作文件流的内部指针</p>
+<p> close函 数</p>
+<p>关闭与一个输出文件流关联的磁盘文件</p>
+<p>错误处理函数</p>
+<p>在写到一个流时进行错误处理</p>
+<h1 id="_80">输入流</h1>
+<p>重要的输入流类型 ：</p>
+<p> istream类最适合用于顺序文本模式输入。cin 是预定义的标准输入对象<br />
+ ifstream类支持磁盘文件输入</p>
+<p> 提取运算符 (&gt;&gt;)</p>
+<p> 对于所有标准C++数据类型预定义了重载<br />
+ 它是从一个输入流对象获取数据最容易的方法</p>
+<p> 如果在构造函数中指定文件名和模式， 在构造该对象时该文件自动打开。<br />
+i fs tream myFile ( " filename " , iosmode ) ; <br />
+ 在调用缺省构造函数之后使用open函数来打开文件。</p>
+<p>i fs tream myFile ; //建立一个文件流对象</p>
+<p>myFile . open ( " filename " , iosmode ) ; / /打开文件 " filename“</p>
+<p> 成员函数</p>
+<p>open （ ） get （ ） getline （ ） read （ ） seekg （ ） tellg （ ）clo se （ ）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2026 BurningUFO
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

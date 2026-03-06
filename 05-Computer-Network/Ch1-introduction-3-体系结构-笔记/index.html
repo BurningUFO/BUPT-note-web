@@ -1,0 +1,1769 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Computer Science Notes and Project Logs">
+      
+      
+        <meta name="author" content="BurningUFO">
+      
+      
+      
+        <link rel="prev" href="../Ch1-introduction-2-%E7%BD%91%E7%BB%9C%E5%88%86%E7%B1%BB-%E8%AE%B2%E8%A7%A3%E6%96%87%E6%A1%A3/">
+      
+      
+        <link rel="next" href="../../06-Probability-Theory/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Ch1-introduction-3-体系结构-笔记 - My Knowledge Base</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch1-introduction-3-" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="My Knowledge Base" class="md-header__button md-logo" aria-label="My Knowledge Base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Knowledge Base
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch1-introduction-3-体系结构-笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  05 Computer Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06-Probability-Theory/" class="md-tabs__link">
+          
+  
+  
+  06 Probability Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07-MaoGai/" class="md-tabs__link">
+          
+  
+  
+  07 MaoGai
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08-OOP-Cpp-Practice/" class="md-tabs__link">
+          
+  
+  
+  08 OOP Cpp Practice
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../09-Data-Structure-Course-Design/" class="md-tabs__link">
+          
+  
+  
+  09 Data Structure Course Design
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Knowledge Base" class="md-nav__button md-logo" aria-label="My Knowledge Base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Knowledge Base
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Computer Network
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 Computer Network
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ch1-introduction-2-%E7%BD%91%E7%BB%9C%E5%88%86%E7%B1%BB-%E8%AE%B2%E8%A7%A3%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch1-introduction-2-网络分类-讲解文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch1-introduction-3-体系结构-笔记
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch1-introduction-3-体系结构-笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#page-4-page-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 4 - Page 5]：[网络体系结构为何采用分层]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-6-page-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 6 - Page 8]：[协议、对等实体、接口与协议栈]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-10-page-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 10 - Page 11]：[虚拟通信与信息流]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-12-page-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 12 - Page 14]：[封装细节：消息到段/包/帧]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 15]：[网络体系结构复盘]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 16]：[分层设计核心问题]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-17-page-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 17 - Page 19]：[面向连接与无连接服务分类]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-20-sap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 20]：[服务、用户与 SAP]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-21-page-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 21 - Page 23]：[服务原语与呼叫流程]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-24-page-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 24 - Page 25]：[简单面向连接服务实现视角]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-26-page-28dns-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 26 - Page 28]：[DNS 与 Web 访问中的“协议+服务”]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-29-page-31service-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 29 - Page 31]：[Service 与 Protocol 的解耦]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 32]：[协议标准的三要素]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-33-pdu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 33]：[服务原语与 PDU 的电话类比]
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 Probability Theory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 Probability Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Probability-Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 MaoGai
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07 MaoGai
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-MaoGai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 OOP Cpp Practice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08 OOP Cpp Practice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-OOP-Cpp-Practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-OOP-Cpp-Practice/01-Introduction-%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-Introduction-详细笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-OOP-Cpp-Practice/02.C%2B%2B%20Foundations/hybrid_auto/02.C%2B%2B%20Foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.C++ Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-OOP-Cpp-Practice/02-C%2B%2B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-C++语言基础-期末复习总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-OOP-Cpp-Practice/%E8%AF%BE%E7%A8%8B%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 Data Structure Course Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09 Data Structure Course Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-Data-Structure-Course-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-Data-Structure-Course-Design/AgentTeam%E6%96%B9%E6%A1%88%E4%B8%8EPrompt%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AgentTeam方案与Prompt模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-Data-Structure-Course-Design/docs/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tasks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-Data-Structure-Course-Design/%E4%B8%89%E4%BA%BA%E5%B0%8F%E7%BB%84AI%E5%8D%8F%E4%BD%9C%E8%90%BD%E5%9C%B0%E8%AE%A1%E5%88%92%E4%B9%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三人小组AI协作落地计划书
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-Data-Structure-Course-Design/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E8%AE%B2%E4%B9%89%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构课程设计讲义总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#page-4-page-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 4 - Page 5]：[网络体系结构为何采用分层]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-6-page-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 6 - Page 8]：[协议、对等实体、接口与协议栈]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-10-page-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 10 - Page 11]：[虚拟通信与信息流]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-12-page-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 12 - Page 14]：[封装细节：消息到段/包/帧]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 15]：[网络体系结构复盘]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 16]：[分层设计核心问题]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-17-page-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 17 - Page 19]：[面向连接与无连接服务分类]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-20-sap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 20]：[服务、用户与 SAP]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-21-page-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 21 - Page 23]：[服务原语与呼叫流程]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-24-page-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 24 - Page 25]：[简单面向连接服务实现视角]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-26-page-28dns-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 26 - Page 28]：[DNS 与 Web 访问中的“协议+服务”]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-29-page-31service-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 29 - Page 31]：[Service 与 Protocol 的解耦]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 32]：[协议标准的三要素]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-33-pdu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 [Page 33]：[服务原语与 PDU 的电话类比]
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ch1-introduction-3-">Ch1-introduction-3-体系结构 复习笔记</h1>
+<p><em>[第 1 页]：目录/过渡页，跳过。</em><br />
+<em>[第 2 页]：目录/过渡页，跳过。</em><br />
+<em>[第 3 页]：目录/过渡页，跳过。</em>  </p>
+<h3 id="page-4-page-5">🔖 [Page 4 - Page 5]：[网络体系结构为何采用分层]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Network architecture（网络体系结构）</strong>：网络按层次栈组织。</li>
+<li><strong>Layering（分层）</strong>：把复杂协调问题拆成局部问题。</li>
+<li><strong>Encapsulation（封装）</strong>：下层向上层提供服务并隐藏实现细节。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：总体架构层面</li>
+<li><em>运行逻辑</em>：<code>1. 网络通信协调复杂 -&gt; 2. 采用分层降低设计复杂度 -&gt; 3. 每层在下层基础上构建并向上提供服务</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>为什么分层能提升互连互通？简答：分层把整体复杂性拆解，接口清晰，便于异构系统协同。</li>
+<li>封装的直接价值是什么？简答：上层只依赖服务，不依赖下层内部状态和算法。</li>
+</ul>
+<h3 id="page-6-page-8">🔖 [Page 6 - Page 8]：[协议、对等实体、接口与协议栈]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Protocol（协议）</strong>：通信双方关于“如何通信”的约定。</li>
+<li><strong>Peers（对等实体）</strong>：不同主机对应层的实体（可为进程或硬件）。</li>
+<li><strong>Interface（接口）</strong>：下层向上层开放的原语与服务。</li>
+<li><strong>Protocol Stack（协议栈）</strong>：系统使用的协议列表。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：跨层通用</li>
+<li><em>运行逻辑</em>：<code>1. 对等层之间按协议“虚拟通信” -&gt; 2. 相邻层通过接口调用服务 -&gt; 3. 整体由层+协议构成体系结构</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>协议与接口边界在哪里？简答：协议约束对等实体消息规则；接口约束上下层服务访问方式。</li>
+<li>为什么“架构”不等于“实现”？简答：架构定义层与协议关系，不绑定具体实现细节。</li>
+</ul>
+<p><em>[第 7 页]：目录/过渡页，跳过。</em><br />
+<em>[第 9 页]：目录/过渡页，跳过。</em>  </p>
+<h3 id="page-10-page-11">🔖 [Page 10 - Page 11]：[虚拟通信与信息流]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Virtual communication（虚拟通信）</strong>：除最底层外的逻辑对等通信。</li>
+<li><strong>Actual communication（实际通信）</strong>：物理层真实传输。</li>
+<li><strong>Information flow</strong>：支撑高层虚拟通信的信息流过程。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：层间总体机制</li>
+<li><em>运行逻辑</em>：高层看见的是对等通信，真实数据逐层下传后在底层实际发送，再逐层上传恢复语义。</li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>为什么高层“看起来直连”？简答：中间细节被分层与封装屏蔽。</li>
+<li>虚拟通信依赖什么前提？简答：依赖各层按协议正确处理并转交数据。</li>
+</ul>
+<h3 id="page-12-page-14">🔖 [Page 12 - Page 14]：[封装细节：消息到段/包/帧]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Header（首部）</strong>：控制信息（如序号、长度、时间等）。</li>
+<li><strong>Packet</strong>：三层分片后单元。</li>
+<li><strong>Frame</strong>：二层加首尾部后的传输单元。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：应用层 / 传输层 / 网络层 / 链路层 / 物理层</li>
+<li><em>运行逻辑</em>：<code>1. 五层产生命令 M 给四层 -&gt; 2. 四层加首部 -&gt; 3. 三层因尺寸限制分包并加三层首部、选择外发链路 -&gt; 4. 二层加首部与尾部 -&gt; 5. 一层物理发送</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>三层为什么要“分包”？简答：因为三层协议对可传消息大小有限制。</li>
+<li>二层为什么要加 trailer？简答：课件给出“加首尾部”机制形成链路层传输单元。</li>
+</ul>
+<h3 id="page-15">🔖 [Page 15]：[网络体系结构复盘]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>分层目标</strong>：简化设计与实现、便于互连互通。</li>
+<li><strong>U 形数据流</strong>：发送端自顶向下、接收端自底向上。</li>
+<li><strong>封装控制信息</strong>：由协议定义。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：跨层总览</li>
+<li><em>运行逻辑</em>：对等实体按协议通信，最底层实际通信，其余层虚拟通信，系统端到端形成 U 形信息流。</li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>“最底层实际通信”如何理解？简答：真实比特传输只在物理介质发生。</li>
+<li>封装字段由谁定义？简答：由该层协议定义。</li>
+</ul>
+<h3 id="page-16">🔖 [Page 16]：[分层设计核心问题]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Reliability</strong>：差错检测和恢复。</li>
+<li><strong>Routing</strong>：路径选择。</li>
+<li><strong>Addressing/Naming</strong>：标识发送方与接收方。</li>
+<li><strong>Internetworking</strong>：网络互通性。</li>
+<li><strong>Scalability</strong>：可扩展性。</li>
+<li><strong>Statistical multiplexing</strong>：按需分配资源。</li>
+<li><strong>Flow control</strong>：避免快发送方淹没慢接收方。</li>
+<li><strong>QoS</strong>：服务质量。</li>
+<li><strong>Security</strong>：安全性。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：跨层设计议题</li>
+<li><em>运行逻辑</em>：分层用于隐藏实现并支持演进，同时处理资源分配与性能/安全目标。</li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>流量控制为何必要？简答：快发送方可能淹没慢接收方。</li>
+<li>可扩展性为何关键？简答：网络规模增长要求机制可持续演进。</li>
+</ul>
+<h3 id="page-17-page-19">🔖 [Page 17 - Page 19]：[面向连接与无连接服务分类]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Connection-oriented service</strong>：建立连接并可协商。</li>
+<li><strong>Reliable vs Unreliable</strong>：是否确认可靠。</li>
+<li><strong>Message sequence vs Byte stream</strong>：前者保留消息边界，后者无边界。</li>
+<li><strong>Store-and-forward vs Cut-through</strong>：两种交换方式。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：服务模型层面</li>
+<li><em>运行逻辑</em>：按是否建连、是否可靠、边界保持与交换方式进行服务分类（课件给出六种类型）。</li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>字节流为何“不保留边界”？简答：连接只呈现连续字节序列。</li>
+<li>交换方式差异影响什么？简答：影响转发处理方式与时延形态。</li>
+</ul>
+<h3 id="page-20-sap">🔖 [Page 20]：[服务、用户与 SAP]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Service provider</strong>：第 n 层。</li>
+<li><strong>Service user</strong>：第 n+1 层。</li>
+<li><strong>SAP（Service Access Point）</strong>：上层访问下层服务的位置。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：相邻层接口关系</li>
+<li><em>运行逻辑</em>：<code>1. n 层实现服务 -&gt; 2. n+1 层通过 n 层 SAP 调用</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>SAP 的工程意义是什么？简答：提供明确访问点，隔离层间实现细节。</li>
+<li>为什么要区分 provider/user？简答：明确职责与调用方向。</li>
+</ul>
+<h3 id="page-21-page-23">🔖 [Page 21 - Page 23]：[服务原语与呼叫流程]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Service primitives</strong>：服务规范的操作集合。</li>
+<li><strong>CONNECT.request / indication / response / confirm</strong>：连接建立阶段原语。</li>
+<li><strong>DATA.request / indication</strong>：数据传输阶段原语。</li>
+<li><strong>DISCONNECT.request / indication</strong>：连接释放阶段原语。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：接口与服务调用</li>
+<li><em>运行逻辑</em>：<code>1. CONNECT.request -&gt; 2. CONNECT.indication -&gt; 3. CONNECT.response -&gt; 4. CONNECT.confirm -&gt; 5. DATA 交换 -&gt; 6. DISCONNECT</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>为什么 CONNECT 需要四个阶段原语？简答：要覆盖请求、通知、应答、确认四类状态变化。</li>
+<li>DATA 与 CONNECT 的职责差异？简答：CONNECT 负责会话建立，DATA 负责载荷交换。</li>
+</ul>
+<h3 id="page-24-page-25">🔖 [Page 24 - Page 25]：[简单面向连接服务实现视角]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>System call</strong>：协议栈在 OS 内时，原语通常表现为系统调用（API）。</li>
+<li><strong>Process</strong>：程序的一次执行。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：操作系统与协议栈交互</li>
+<li><em>运行逻辑</em>：服务原语通过系统调用对应用暴露，支撑简单 client-server 的建连、传输和交互。</li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>为什么服务原语常映射为系统调用？简答：协议栈在 OS 中，需要 OS API 暴露能力给应用。</li>
+<li>面向连接交互最小要素有哪些？简答：建连、数据交换、断连。</li>
+</ul>
+<h3 id="page-26-page-28dns-web">🔖 [Page 26 - Page 28]：[DNS 与 Web 访问中的“协议+服务”]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>DNS</strong>：域名到 IP 的翻译机制。</li>
+<li><strong>UDP</strong>：课件示例中为 DNS 提供无连接服务。</li>
+<li><strong>TCP</strong>：课件示例中为 Web 请求/响应提供面向连接服务。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：应用层协议 + 传输层服务</li>
+<li><em>运行逻辑</em>：<code>1. 输入域名并经 DNS 获取 IP（示例：114.255.40.66） -&gt; 2. 浏览器与 Web 服务器经 TCP 建连 -&gt; 3. 请求主页并返回主页数据</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>同一业务流程里为何先 UDP 后 TCP？简答：课件示例中 DNS 由 UDP 承载、Web 由 TCP 承载。</li>
+<li>该例如何体现“服务由协议实现”？简答：应用协议分别依赖下层 UDP/TCP 服务完成通信。</li>
+</ul>
+<h3 id="page-29-page-31service-protocol">🔖 [Page 29 - Page 31]：[Service 与 Protocol 的解耦]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Service</strong>：层对用户可执行的操作定义，不描述实现细节。</li>
+<li><strong>Protocol</strong>：对等实体交换消息的格式与语义规则。</li>
+<li><strong>PDU（Protocol Data Unit）</strong>：对等实体间交换的信息单元。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：架构抽象层面</li>
+<li><em>运行逻辑</em>：<code>1. 下层通过接口向上提供服务 -&gt; 2. 对等实体通过协议实现服务 -&gt; 3. 服务不变时可替换协议</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>为什么说 service/protocol “completely decoupled”？简答：服务定义“做什么”，协议定义“怎么做”。</li>
+<li>协议升级的边界条件是什么？简答：上层可见服务语义不变。</li>
+</ul>
+<h3 id="page-32">🔖 [Page 32]：[协议标准的三要素]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Syntax</strong>：协议消息格式。</li>
+<li><strong>Semantics</strong>：字段及取值含义。</li>
+<li><strong>Synchronization/Timing</strong>：事件发生顺序说明。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：协议规范层面</li>
+<li><em>运行逻辑</em>：协议标准通过语法、语义、同步三维共同约束行为。</li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>仅定义消息格式为什么不够？简答：还需定义字段含义与时序才能互操作。</li>
+<li>时序约束常影响什么？简答：影响双方状态推进与事件触发顺序。</li>
+</ul>
+<h3 id="page-33-pdu">🔖 [Page 33]：[服务原语与 PDU 的电话类比]</h3>
+<ul>
+<li><strong>🧠 核心术语 (Concepts)</strong>：</li>
+<li><strong>Service primitives（Con/Data/Disc 系列）</strong>：用户与服务提供者交互的操作。</li>
+<li><strong>PDU</strong>：服务提供者之间交换的协议数据单元。</li>
+<li><strong>⚙️ 协议与机制解析 (Mechanisms)</strong>：</li>
+<li><em>所属分层</em>：服务调用与对等交换关系</li>
+<li><em>运行逻辑</em>：<code>1. 用户通过接口触发原语 -&gt; 2. 服务提供者之间交换 PDU -&gt; 3. 完成请求/通知/数据/断开</code></li>
+<li><strong>🎯 考点与高频面试题 (Exam Focus)</strong>：</li>
+<li>原语与 PDU 的本质区别？简答：原语是“用户-本层服务”调用，PDU 是“对等实体-对等实体”交换。</li>
+<li>电话类比解决了什么理解难点？简答：区分接口调用流程与网络内部协议交换流程。</li>
+</ul>
+<p>本批次总结完毕，请发送下一批课件。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2026 BurningUFO
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
