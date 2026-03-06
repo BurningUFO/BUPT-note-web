@@ -1,4 +1,4 @@
-site_name: "My Knowledge Base"
+﻿site_name: "My Knowledge Base"
 site_description: "Computer Science Notes and Project Logs"
 site_author: "BurningUFO"
 
@@ -10,6 +10,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.expand
     - navigation.top
     - navigation.instant
     - search.suggest
@@ -21,18 +22,27 @@ theme:
       accent: cyan
 
 nav:
-  - 首页: index.md
-  - 01 数据结构: 01-Data-Structures/README.md
-  - 02 C/C++: 02-C-and-Cpp/README.md
-  - 03 蓝桥杯 Python:
-      - 目录: 03-Python-Blue-Bridge-Cup/README.md
-      - 示例笔记: 03-Python-Blue-Bridge-Cup/test.md
-  - 04 项目实践: 04-Projects/README.md
-  - 05 计算机网络: 05-Computer-Network/README.md
-  - 06 概率论: 06-Probability-Theory/README.md
-  - 07 毛概: 07-MaoGai/README.md
-  - 08 面向对象程序设计实践(C++): 08-OOP-Cpp-Practice/README.md
-  - 09 数据结构课程设计: 09-Data-Structure-Course-Design/README.md
+  - 'Home': index.md
+  - '05 Computer Network':
+      - 'Index': '05-Computer-Network/index.md'
+      - 'Ch1-introduction-2-网络分类-讲解文档': '05-Computer-Network/Ch1-introduction-2-网络分类-讲解文档.md'
+      - 'Ch1-introduction-3-体系结构-笔记': '05-Computer-Network/Ch1-introduction-3-体系结构-笔记.md'
+  - '06 Probability Theory':
+      - 'Index': '06-Probability-Theory/index.md'
+  - '07 MaoGai':
+      - 'Index': '07-MaoGai/index.md'
+  - '08 OOP Cpp Practice':
+      - 'Index': '08-OOP-Cpp-Practice/index.md'
+      - '01-Introduction-详细笔记': '08-OOP-Cpp-Practice/01-Introduction-详细笔记.md'
+      - '02.C++ Foundations': '08-OOP-Cpp-Practice/02.C++ Foundations/hybrid_auto/02.C++ Foundations.md'
+      - '02-C++语言基础-期末复习总结': '08-OOP-Cpp-Practice/02-C++语言基础-期末复习总结.md'
+      - '课程概述': '08-OOP-Cpp-Practice/课程概述.md'
+  - '09 Data Structure Course Design':
+      - 'Index': '09-Data-Structure-Course-Design/index.md'
+      - 'AgentTeam方案与Prompt模板': '09-Data-Structure-Course-Design/AgentTeam方案与Prompt模板.md'
+      - 'tasks': '09-Data-Structure-Course-Design/docs/tasks.md'
+      - '三人小组AI协作落地计划书': '09-Data-Structure-Course-Design/三人小组AI协作落地计划书.md'
+      - '数据结构课程设计讲义总结': '09-Data-Structure-Course-Design/数据结构课程设计讲义总结.md'
 
 markdown_extensions:
   - attr_list

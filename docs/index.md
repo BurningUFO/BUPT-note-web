@@ -2,12 +2,12 @@
   <div class="hero-badge">BurningUFO · CS Knowledge Base</div>
   <h1>简约、现代、可长期沉淀的笔记网站</h1>
   <p>
-    聚焦真实学习流程：课程知识、算法训练、语言实践与项目复盘。
+    聚焦真实学习流程：课程学习、笔记沉淀与项目复盘。
     不做花哨噱头，所有入口都直接指向你的实际内容。
   </p>
   <div class="hero-actions">
-    <a class="md-button md-button--primary" href="01-Data-Structures/README.md">开始学习</a>
-    <a class="md-button" href="04-Projects/README.md">查看项目</a>
+    <a class="md-button md-button--primary" href="05-Computer-Network/">开始学习</a>
+    <a class="md-button" href="09-Data-Structure-Course-Design/">查看课程设计</a>
   </div>
 </div>
 
@@ -52,47 +52,27 @@
 ## 笔记入口 { #entries }
 
 <div class="entry-grid">
-  <a class="entry-card reveal-on-scroll" href="01-Data-Structures/README.md">
-    <p class="entry-id">01</p>
-    <h3>Data Structures</h3>
-    <p>数组、链表、树、图与常见题型方法论。</p>
-  </a>
-  <a class="entry-card reveal-on-scroll" href="02-C-and-Cpp/README.md">
-    <p class="entry-id">02</p>
-    <h3>C / C++</h3>
-    <p>语法重点、STL 使用、性能优化与工程习惯。</p>
-  </a>
-  <a class="entry-card reveal-on-scroll" href="03-Python-Blue-Bridge-Cup/README.md">
-    <p class="entry-id">03</p>
-    <h3>Python Blue Bridge Cup</h3>
-    <p>竞赛训练、题解和 Python 代码模板沉淀。</p>
-  </a>
-  <a class="entry-card reveal-on-scroll" href="04-Projects/README.md">
-    <p class="entry-id">04</p>
-    <h3>Projects</h3>
-    <p>项目文档、里程碑记录与技术决策复盘。</p>
-  </a>
-  <a class="entry-card reveal-on-scroll" href="05-Computer-Network/README.md">
+  <a class="entry-card reveal-on-scroll" href="05-Computer-Network/">
     <p class="entry-id">05</p>
     <h3>Computer Network</h3>
     <p>课程章节讲解与体系结构复习笔记。</p>
   </a>
-  <a class="entry-card reveal-on-scroll" href="06-Probability-Theory/README.md">
+  <a class="entry-card reveal-on-scroll" href="06-Probability-Theory/">
     <p class="entry-id">06</p>
     <h3>Probability Theory</h3>
     <p>概率论课程笔记与题目推导整理。</p>
   </a>
-  <a class="entry-card reveal-on-scroll" href="07-MaoGai/README.md">
+  <a class="entry-card reveal-on-scroll" href="07-MaoGai/">
     <p class="entry-id">07</p>
     <h3>MaoGai</h3>
     <p>毛概课程学习资料与复习记录。</p>
   </a>
-  <a class="entry-card reveal-on-scroll" href="08-OOP-Cpp-Practice/README.md">
+  <a class="entry-card reveal-on-scroll" href="08-OOP-Cpp-Practice/">
     <p class="entry-id">08</p>
     <h3>OOP Cpp Practice</h3>
     <p>面向对象程序设计实践（C++）课程笔记。</p>
   </a>
-  <a class="entry-card reveal-on-scroll" href="09-Data-Structure-Course-Design/README.md">
+  <a class="entry-card reveal-on-scroll" href="09-Data-Structure-Course-Design/">
     <p class="entry-id">09</p>
     <h3>Data Structure Course Design</h3>
     <p>数据结构课程设计方案、任务和复盘文档。</p>

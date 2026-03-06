@@ -88,6 +88,116 @@ function Get-FileHashCompat {
   return ([System.BitConverter]::ToString($hashBytes) -replace '-', '')
 }
 
+function Quote-YamlScalar {
+  param([string]$Value)
+  $safe = $Value
+  if ($null -eq $safe) {
+    $safe = ""
+  }
+  $safe = $safe -replace "'", "''"
+  return "'$safe'"
+}
+
+function Update-MkdocsConfig {
+  param(
+    [string]$RepoRoot,
+    [string]$SyncConfigPath
+  )
+
+  $config = Get-Content -Raw -LiteralPath $SyncConfigPath | ConvertFrom-Json
+  $mappings = @($config.mappings | Where-Object { Get-BoolValue -Value $_.enabled -DefaultValue $true })
+
+  $lines = New-Object System.Collections.Generic.List[string]
+  $lines.Add("site_name: `"My Knowledge Base`"")
+  $lines.Add("site_description: `"Computer Science Notes and Project Logs`"")
+  $lines.Add("site_author: `"BurningUFO`"")
+  $lines.Add("")
+  $lines.Add("copyright: `"Copyright (c) 2026 BurningUFO`"")
+  $lines.Add("")
+  $lines.Add("theme:")
+  $lines.Add("  name: material")
+  $lines.Add("  language: zh")
+  $lines.Add("  features:")
+  $lines.Add("    - navigation.tabs")
+  $lines.Add("    - navigation.sections")
+  $lines.Add("    - navigation.expand")
+  $lines.Add("    - navigation.top")
+  $lines.Add("    - navigation.instant")
+  $lines.Add("    - search.suggest")
+  $lines.Add("    - search.highlight")
+  $lines.Add("    - content.code.copy")
+  $lines.Add("  palette:")
+  $lines.Add("    - scheme: slate")
+  $lines.Add("      primary: black")
+  $lines.Add("      accent: cyan")
+  $lines.Add("")
+  $lines.Add("nav:")
+  $lines.Add("  - $(Quote-YamlScalar 'Home'): index.md")
+
+  foreach ($mapping in $mappings) {
+    $targetRel = ([string]$mapping.target) -replace '\\', '/'
+    if ($targetRel.StartsWith("docs/")) {
+      $targetRel = $targetRel.Substring(5)
+    }
+
+    $targetAbs = Join-Path $RepoRoot ([string]$mapping.target)
+    if (-not (Test-Path -LiteralPath $targetAbs)) {
+      continue
+    }
+
+    $sectionTitle = [string]$mapping.navTitle
+    if ([string]::IsNullOrWhiteSpace($sectionTitle)) {
+      $sectionTitle = [string]$mapping.readmeTitle
+    }
+    if ([string]::IsNullOrWhiteSpace($sectionTitle)) {
+      $sectionTitle = [string]$mapping.name
+    }
+
+    $indexCandidate = Join-Path $targetAbs "index.md"
+    $sectionIndexPath = "$targetRel/index.md"
+    if (-not (Test-Path -LiteralPath $indexCandidate)) {
+      $sectionIndexPath = "$targetRel/README.md"
+    }
+
+    $lines.Add("  - $(Quote-YamlScalar $sectionTitle):")
+    $lines.Add("      - $(Quote-YamlScalar 'Index'): $(Quote-YamlScalar $sectionIndexPath)")
+
+    $noteFiles = Get-ChildItem -LiteralPath $targetAbs -Recurse -File -Filter *.md |
+      Where-Object { $_.Name -ine "README.md" -and $_.Name -ine "index.md" } |
+      Sort-Object FullName
+
+    foreach ($file in $noteFiles) {
+      $rel = Get-RelativePathCompat -BasePath $targetAbs -Path $file.FullName
+      $rel = ($rel -replace '\\', '/')
+      $docPath = "$targetRel/$rel"
+      $display = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
+      $lines.Add("      - $(Quote-YamlScalar $display): $(Quote-YamlScalar $docPath)")
+    }
+  }
+
+  $lines.Add("")
+  $lines.Add("markdown_extensions:")
+  $lines.Add("  - attr_list")
+  $lines.Add("  - md_in_html")
+  $lines.Add("  - pymdownx.highlight:")
+  $lines.Add("      anchor_linenums: true")
+  $lines.Add("  - pymdownx.inlinehilite")
+  $lines.Add("  - pymdownx.snippets")
+  $lines.Add("  - pymdownx.superfences")
+  $lines.Add("  - pymdownx.arithmatex:")
+  $lines.Add("      generic: true")
+  $lines.Add("  - pymdownx.tasklist:")
+  $lines.Add("      custom_checkbox: true")
+  $lines.Add("")
+  $lines.Add("extra_css:")
+  $lines.Add("  - stylesheets/extra.css")
+  $lines.Add("")
+  $lines.Add("extra_javascript:")
+  $lines.Add("  - javascripts/extra.js")
+
+  ($lines -join [Environment]::NewLine) | Out-File -FilePath (Join-Path $RepoRoot "mkdocs.yml") -Encoding utf8 -Force
+}
+
 function Invoke-SyncMappings {
   param(
     [string]$RepoRoot,
@@ -193,7 +303,7 @@ function Invoke-SyncMappings {
     if ($deleteMissing) {
       $targetFiles = Get-ChildItem -LiteralPath $target -File -Recurse -Filter *.md
       foreach ($targetFile in $targetFiles) {
-        if ($targetFile.Name -ieq "README.md") {
+        if ($targetFile.Name -ieq "index.md") {
           continue
         }
         $targetRelative = Get-RelativePathCompat -BasePath $target -Path $targetFile.FullName
@@ -212,7 +322,7 @@ function Invoke-SyncMappings {
         $readmeTitle = $name
       }
 
-      $readmePath = Join-Path $target "README.md"
+      $indexPath = Join-Path $target "index.md"
       $relativeList = @()
       foreach ($file in $files) {
         if ($flatten) {
@@ -242,7 +352,7 @@ function Invoke-SyncMappings {
         }
       }
 
-      ($readmeLines -join [Environment]::NewLine) | Out-File -FilePath $readmePath -Encoding utf8 -Force
+      ($readmeLines -join [Environment]::NewLine) | Out-File -FilePath $indexPath -Encoding utf8 -Force
     }
 
     Write-Host "Mapping '$name': scanned $($files.Count) md files, updated $updatedCount, deleted $deletedCount." -ForegroundColor Green
@@ -269,6 +379,10 @@ if (-not $NoSync) {
   }
 } else {
   Write-Host "`n==> Sync step skipped" -ForegroundColor Yellow
+}
+
+Invoke-Step "Refresh mkdocs navigation from mapped courses" {
+  Update-MkdocsConfig -RepoRoot $repoRoot -SyncConfigPath $resolvedConfigPath
 }
 
 if ($SyncOnly) {

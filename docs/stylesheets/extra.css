@@ -17,10 +17,17 @@
 body {
   font-family: "Manrope", "Segoe UI", sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(1200px 500px at 8% -8%, rgba(61, 228, 255, 0.16), transparent 55%),
-    radial-gradient(900px 380px at 90% 0%, rgba(79, 141, 255, 0.2), transparent 50%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  background-color: #060a12;
+  background-image:
+    radial-gradient(140% 110% at 0% -8%, rgba(61, 228, 255, 0.18) 0%, rgba(61, 228, 255, 0.05) 30%, transparent 62%),
+    radial-gradient(120% 95% at 100% 4%, rgba(79, 141, 255, 0.2) 0%, rgba(79, 141, 255, 0.06) 35%, transparent 68%),
+    radial-gradient(130% 100% at 50% 108%, rgba(41, 93, 175, 0.22) 0%, rgba(41, 93, 175, 0.05) 34%, transparent 70%),
+    linear-gradient(165deg, #050912 0%, #081225 42%, #0a1629 74%, #0c1830 100%);
+  background-attachment: fixed;
+}
+
+.md-main {
+  background: transparent;
 }
 
 .md-header,
@@ -28,6 +35,10 @@ body {
   background: rgba(4, 10, 20, 0.72);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
+}
+
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  border-right: 1px solid rgba(137, 172, 201, 0.15);
 }
 
 .md-header__title,

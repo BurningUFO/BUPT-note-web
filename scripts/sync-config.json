@@ -8,6 +8,7 @@
       "recurse": true,
       "flatten": false,
       "deleteMissing": true,
+      "navTitle": "05 Computer Network",
       "readmeTitle": "05 Computer Network",
       "excludeFileNames": [
         "prompt.md",
@@ -22,6 +23,7 @@
       "recurse": true,
       "flatten": false,
       "deleteMissing": true,
+      "navTitle": "06 Probability Theory",
       "readmeTitle": "06 Probability Theory",
       "excludeFileNames": [
         "prompt.md",
@@ -36,6 +38,7 @@
       "recurse": true,
       "flatten": false,
       "deleteMissing": true,
+      "navTitle": "07 MaoGai",
       "readmeTitle": "07 MaoGai",
       "excludeFileNames": [
         "prompt.md",
@@ -50,6 +53,7 @@
       "recurse": true,
       "flatten": false,
       "deleteMissing": true,
+      "navTitle": "08 OOP Cpp Practice",
       "readmeTitle": "08 OOP Cpp Practice",
       "excludeFileNames": [
         "prompt.md",
@@ -64,6 +68,7 @@
       "recurse": true,
       "flatten": false,
       "deleteMissing": true,
+      "navTitle": "09 Data Structure Course Design",
       "readmeTitle": "09 Data Structure Course Design",
       "excludeFileNames": [
         "prompt.md",
